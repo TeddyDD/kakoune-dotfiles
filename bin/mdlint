@@ -1,0 +1,3 @@
+#!/bin/sh
+
+markdownlint $1 2>&1 | kak -n -f '<a-s>s\d+:<ret>a1:<esc><a-b>hd'
