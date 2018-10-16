@@ -66,6 +66,8 @@ plug "https://github.com/andreyorst/fzf.kak" "*.kak"
 set-option global fzf_highlighter 'chroma -f terminal16m -s solarized-light {}'
 map global user f ': fzf-mode<ret>'
 
+plug "github.com/laelath/kakoune-show-matching-insert"
+
 ##############
 # MY PLUGINS #
 ##############
@@ -138,6 +140,7 @@ hook global BufOpenFile .* %{
 hook global KakBegin .* %{
     add-highlighter global/linenumbers number-lines -hlcursor -relative
 	add-highlighter global/matching_char show-matching
+	add-highlighter global/matching_prev_char ranges show_matching_insert
 
     # search word
     add-highlighter global/ dynregex '%reg{/}' 0:+u
