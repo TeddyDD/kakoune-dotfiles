@@ -66,7 +66,9 @@ plug "https://github.com/andreyorst/fzf.kak" "*.kak"
 set-option global fzf_highlighter 'chroma -f terminal16m -s solarized-light {}'
 map global user f ': fzf-mode<ret>'
 
-plug "github.com/laelath/kakoune-show-matching-insert"
+plug "https://github.com/laelath/kakoune-show-matching-insert"
+
+plug "https://github.com/eraserhd/kak-ansi"
 
 ##############
 # MY PLUGINS #
@@ -204,25 +206,27 @@ hook global  WinSetOption filetype=go %{
 # FIXME
 define-command -params 1 \
 -shell-candidates %{ gopkgs } \
-go-import %{ evaluate-commands -draft -no-hooks %{ %sh{
+go-import %{ evaluate-commands -draft -no-hooks %{
+    evaluate-commands %sh{
     path_file_tmp=$(mktemp "${TMPDIR:-/tmp}"/kak-go-import-XXXXXX)
-    echo "
-        write ""${path_file_tmp}""
+    goimportcmd="goimport -add ${1}"
+    printf %s\\n "
+        write -sync \"${path_file_tmp}\"
 
-        nop %sh{
-            readonly path_file_out=\$(mktemp ""${TMPDIR:-/tmp}""/kak-go-import-XXXXXX)
+        evaluate-commands %sh{
+            readonly path_file_out=\$(mktemp \"${TMPDIR:-/tmp}\"/kak-formatter-XXXXXX)
 
-            if cat ""${path_file_tmp}"" | eval ""goimport -add $1"" > ""\${path_file_out}""; then
-                printf '%s\\n' ""execute-keys \\%|cat<space>'\${path_file_out}'<ret>""
-                printf '%s\\n' ""%sh{ rm -f '\${path_file_out}' }""
+            if cat \"${path_file_tmp}\" | eval \"${goimportcmd}\" > \"\${path_file_out}\"; then
+                printf '%s\\n' \"execute-keys \\%|cat<space>'\${path_file_out}'<ret>\"
+                printf '%s\\n' \"nop %sh{ rm -f '\${path_file_out}' }\"
             else
-                printf '%s\\n' ""
+                printf '%s\\n' \"
                     evaluate-commands -client '${kak_client}' echo -markup '{Error}goimport returned an error (\$?)'
-                ""
-                rm -f ""\${path_file_out}""
+                \"
+                rm -f \"\${path_file_out}\"
             fi
 
-            rm -f ""${path_file_tmp}""
+            rm -f \"${path_file_tmp}\"
         }
     "
 }}}
