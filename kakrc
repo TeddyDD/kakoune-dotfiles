@@ -25,7 +25,7 @@ source "%val{config}/utils.kak"
 # PLUGINS #
 ###########
 
-source "%val{config}/plugins/kakoune-plug/plug.kak"
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
 plug "https://github.com/Delapouite/kakoune-text-objects"
 plug "https://github.com/Delapouite/kakoune-auto-percent"
@@ -38,19 +38,24 @@ plug "https://github.com/Delapouite/kakoune-select-view"
 plug "https://github.com/occivink/kakoune-find"
 plug "https://github.com/occivink/kakoune-expand"
 
-plug "https://github.com/occivink/kakoune-phantom-selection"
-map global insert '<c-a>' '<esc>:phantom-sel-iterate-next<ret>a'
-map global insert '<c-q>' '<esc>:phantom-sel-iterate-next<ret>c'
-map global normal '<c-a>' ':phantom-sel-iterate-next<ret>'
-map global normal '<c-q>' ':phantom-sel-clear<ret>'
+plug "https://github.com/occivink/kakoune-phantom-selection" %{
+    map global insert '<c-a>' '<esc>:phantom-sel-iterate-next<ret>a'
+    map global insert '<c-q>' '<esc>:phantom-sel-iterate-next<ret>c'
+    map global normal '<c-a>' ':phantom-sel-iterate-next<ret>'
+    map global normal '<c-q>' ':phantom-sel-clear<ret>'
+}
 
 plug "https://github.com/occivink/kakoune-sudo-write"
 plug "https://github.com/occivink/kakoune-vertical-selection"
 
-plug "https://github.com/lenormf/kakoune-extra" "hatch_terminal.kak"
-alias global t hatch-terminal-x11
+plug "https://github.com/lenormf/kakoune-extra" "noload" %{
+    source "%val{config}/plugins/kakoune-extra/hatch_terminal.kak"
+    alias global t hatch-terminal-x11
+}
 
-plug "https://github.com/lenormf/kakoune-extra" "lineindent.kak"
+plug "https://github.com/lenormf/kakoune-extra" "noload" %{
+    source "%val{config}/plugins/kakoune-extra/lineindent.kak"
+}
 
 plug "https://github.com/alexherbo2/auto-pairs.kak" 
 plug "https://github.com/alexherbo2/distraction-free.kak" 
@@ -62,9 +67,10 @@ plug "https://gitlab.com/fsub/kakoune-mark"
 
 plug "https://gitlab.com/notramo/crystal.kak.git"
 
-plug "https://github.com/andreyorst/fzf.kak" "*.kak"
-set-option global fzf_highlighter 'chroma -f terminal16m -s solarized-light {}'
-map global user f ': fzf-mode<ret>'
+plug "https://github.com/andreyorst/fzf.kak" %{
+    set-option global fzf_highlighter 'chroma -f terminal16m -s solarized-light {}'
+    map global user f ': fzf-mode<ret>'
+}
 
 plug "https://github.com/laelath/kakoune-show-matching-insert"
 
@@ -74,13 +80,24 @@ plug "https://github.com/eraserhd/kak-ansi"
 # MY PLUGINS #
 ##############
 
-plug "https://github.com/TeddyDD/kakoune-wiki"
+plug "https://github.com/TeddyDD/kakoune-wiki" %{
+    wiki_setup "/home/teddy/Notatki/wiki"
+    map global user w :wiki<space> -docstring 'wiki'
+
+    define-command diary %{
+    	edit ~/Notatki/wiki/dziennik-public.md
+    	execute-keys 'geo<esc>! date "+%Y-%m-%d: %H:%M"<ret>k'
+    	underline -
+    }
+}
+
 plug "https://github.com/TeddyDD/kakoune-lf"
 plug "https://github.com/TeddyDD/kakoune-cfdg"
 
-plug "https://github.com/TeddyDD/kakoune-edit-or-dir"
-unalias global e
-alias global e edit-or-dir
+plug "https://github.com/TeddyDD/kakoune-edit-or-dir" %{
+    unalias global e
+    alias global e edit-or-dir
+}
 
 ###########
 # PRIVATE #
@@ -91,19 +108,6 @@ evaluate-commands %sh{
     for f in $files; do
         echo "source $f"
     done
-}
-
-########
-# WIKI #
-########
-
-wiki_setup "/home/teddy/Notatki/wiki"
-map global user w :wiki<space> -docstring 'wiki'
-
-define-command diary %{
-	edit ~/Notatki/wiki/dziennik-public.md
-	execute-keys 'geo<esc>! date "+%Y-%m-%d: %H:%M"<ret>k'
-	underline -
 }
 
 ############
