@@ -26,6 +26,7 @@ source "%val{config}/utils.kak"
 ###########
 
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
+set-option global plug_profiler false
 
 plug "https://github.com/Delapouite/kakoune-text-objects"
 plug "https://github.com/Delapouite/kakoune-auto-percent"
@@ -50,11 +51,8 @@ plug "https://github.com/occivink/kakoune-vertical-selection"
 
 plug "https://github.com/lenormf/kakoune-extra" "noload" %{
     source "%val{config}/plugins/kakoune-extra/hatch_terminal.kak"
-    alias global t hatch-terminal-x11
-}
-
-plug "https://github.com/lenormf/kakoune-extra" "noload" %{
     source "%val{config}/plugins/kakoune-extra/lineindent.kak"
+    alias global t hatch-terminal-x11
 }
 
 plug "https://github.com/alexherbo2/auto-pairs.kak" 
@@ -63,7 +61,10 @@ plug "https://github.com/alexherbo2/distraction-free.kak"
 plug "https://github.com/h-youhei/kakoune-each-line-selection"
 plug "https://github.com/h-youhei/kakoune-surround"
 
-plug "https://gitlab.com/fsub/kakoune-mark"
+plug "https://gitlab.com/fsub/kakoune-mark" %{
+    map global normal <f2> <a-i>w:mark-word<ret>
+    map global normal <f3> :mark-clear<ret>
+}
 
 plug "https://gitlab.com/notramo/crystal.kak.git"
 
@@ -342,8 +343,6 @@ map global goto m '<esc>m;' -docstring 'matching char'
 
 map global user c ':cd-to-buffer-dir<ret>' -docstring 'cd to buffer directory'
 
-map global normal <f2> <a-i>w:mark-word<ret>
-map global normal <f3> :mark-clear<ret>
 
 map global normal <space> ,
 map global user <space> <space>
