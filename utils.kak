@@ -83,3 +83,13 @@ define-command cd-to-buffer-dir -docstring 'cd to current buffers directory' %{
 		printf "change-directory '%s'\n" "$(dirname $kak_buffile)"
 	}
 }
+
+
+########
+# DATE #
+########
+
+define-command date -docstring 'insert ISO-8601 date at point' %{
+	execute-keys '!date --iso-8601<ret>'
+}
+
