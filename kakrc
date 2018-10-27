@@ -130,7 +130,7 @@ define-command rofi-buffers \
     fi
 } }
 
-define-command file-find -params 1 -shell-candidates %{ find . -type f } %{ edit %arg{1} }
+define-command file-find -params 1 -shell-script-candidates %{ find . -type f } %{ edit %arg{1} }
 
 ################
 # GLOBAL HOOKS #
@@ -210,7 +210,7 @@ hook global  WinSetOption filetype=go %{
 # go get -u github.com/uudashr/gopkgs/cmd/gopkgs
 # FIXME
 define-command -params 1 \
--shell-candidates %{ gopkgs } \
+-shell-script-candidates %{ gopkgs } \
 go-import %{ evaluate-commands -draft -no-hooks %{
     evaluate-commands %sh{
     path_file_tmp=$(mktemp "${TMPDIR:-/tmp}"/kak-go-import-XXXXXX)
