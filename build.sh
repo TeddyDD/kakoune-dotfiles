@@ -10,6 +10,7 @@ else
 	exit 1
 fi
 
+mkdir -p ./autoload
 cat $auto/core/**.kak > autoload/0.kak
 cat $auto/base/**.kak >> autoload/0.kak
 cat $auto/extra/**.kak >> autoload/0.kak
