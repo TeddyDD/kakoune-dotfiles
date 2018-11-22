@@ -81,6 +81,7 @@ plug "https://gitlab.com/fsub/kakoune-mark" %{
 
 plug "https://gitlab.com/notramo/crystal.kak.git"
 
+plug "andreyorst/smarttab.kak"
 plug "https://github.com/andreyorst/fzf.kak" %{
     set-option global fzf_highlighter 'chroma -f terminal16m -s solarized-light {}'
     map global user f ': fzf-mode<ret>'
