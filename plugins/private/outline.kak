@@ -15,7 +15,7 @@ define-command -docstring "Create interactive outline of this file for quick jum
 		file="$kak_buffile"
 		type=$kak_opt_filetype
 		cmd="grep -En $(echo $kak_opt_outline_regexp | jq .$type) $file"
-		echo "edit *outline*"
+		echo "edit -scratch *outline*"
 		echo "execute-keys %{ !$cmd<ret>gg }"
 		echo "execute-keys -draft %{ %s:<ret>a<space><esc>& }"
 		echo "set-option buffer outline_current  $file"
