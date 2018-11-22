@@ -84,7 +84,7 @@ plug "https://gitlab.com/notramo/crystal.kak.git"
 plug "andreyorst/smarttab.kak"
 plug "https://github.com/andreyorst/fzf.kak" %{
     set-option global fzf_highlighter 'chroma -f terminal16m -s solarized-light {}'
-    map global user f ': fzf-mode<ret>'
+    map global user f ': fzf-mode<ret>' -docstring 'fzf'
 }
 
 plug "https://github.com/laelath/kakoune-show-matching-insert"
@@ -329,6 +329,7 @@ map global spell e ': spell en<ret>' -docstring 'ENG'
 map global spell f ': spell-next<ret>_: enter-user-mode spell<ret>' -docstring 'next'
 map global spell s ': spell-replace<ret><ret> : enter-user-mode spell<ret>' -docstring 'lucky fix'
 map global spell a ': spell-replace<ret>' -docstring 'manual fix'
+map global spell c ': spell-clear<ret>' -docstring 'clear'
 
 
 map global normal '#' :comment-line<ret> -docstring 'comment line'
