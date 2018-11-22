@@ -21,6 +21,12 @@ source "%val{config}/utils.kak"
 # TEST #
 ########
 
+# fuck muscle memory
+
+map global normal <left> ' :nop<ret>'
+map global normal <right> ' :nop<ret>'
+map global normal <up> ' :nop<ret>'
+map global normal <down> ' :nop<ret>'
 ###########
 # PLUGINS #
 ###########
