@@ -91,6 +91,17 @@ plug "https://github.com/laelath/kakoune-show-matching-insert"
 
 plug "https://github.com/eraserhd/kak-ansi"
 
+plug "eraserhd/parinfer-rust" do %{
+    cargo build --release
+    cargo install
+} %{
+    hook -group parinfer global WinSetOption filetype=lisp %{
+        parinfer -if-enabled -paren
+        hook -group parinfer window NormalKey .* %{ parinfer -if-enabled -smart }
+        hook -group parinfer window InsertChar .* %{ parinfer -if-enabled -smart }
+        hook -group parinfer window InsertDelete .* %{ parinfer -if-enabled -smart }
+    }
+} 
 ##############
 # MY PLUGINS #
 ##############
@@ -198,6 +209,17 @@ hook global NormalKey y|d|c %{ nop %sh{
 ######################
 # FILE TYPE SPECIFIC #
 ######################
+
+# Fennel
+hook global BufCreate .*\.fnl %{
+	set-option buffer filetype lisp
+}
+
+# TIC-80 games written in fennel
+hook global BufCreate .*/TIC-80/fennel/.*\.lua %{
+    set-option buffer filetype lisp
+    lsp-diagnostic-lines-disable
+}
 
 # Markdown
 # ########
