@@ -56,11 +56,6 @@ plug "https://github.com/occivink/kakoune-phantom-selection" %{
 plug "https://github.com/occivink/kakoune-sudo-write"
 plug "https://github.com/occivink/kakoune-vertical-selection"
 
-# plug "https://github.com/lenormf/kakoune-extra" "noload" %{
-#     source "%val{config}/plugins/kakoune-extra/hatch_terminal.kak"
-#     source "%val{config}/plugins/kakoune-extra/lineindent.kak"
-#     alias global t hatch-terminal-x11
-# }
 
 plug "https://github.com/lenormf/kakoune-extra" load %{
     hatch_terminal.kak
