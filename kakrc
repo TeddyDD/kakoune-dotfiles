@@ -45,10 +45,12 @@ plug "https://github.com/occivink/kakoune-find"
 plug "https://github.com/occivink/kakoune-expand"
 
 plug "https://github.com/occivink/kakoune-phantom-selection" %{
-    map global insert '<c-a>' '<esc>:phantom-sel-iterate-next<ret>a'
-    map global insert '<c-q>' '<esc>:phantom-sel-iterate-next<ret>c'
+    map global insert '<c-a>' '<esc>:phantom-sel-iterate-next<ret>'
+    map global insert '<c-w>' '<esc>:phantom-sel-select-all<ret>'
     map global normal '<c-a>' ':phantom-sel-iterate-next<ret>'
-    map global normal '<c-q>' ':phantom-sel-clear<ret>'
+    map global normal '<c-q>' ':phantom-sel-clear'
+    map global normal '<c-q>' '<esc>:phantom-sel-clear<ret>'
+    map global normal '<c-w>' ':phantom-sel-select-all<ret>'
 }
 
 plug "https://github.com/occivink/kakoune-sudo-write"
