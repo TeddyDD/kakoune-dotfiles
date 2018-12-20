@@ -32,7 +32,6 @@ map global normal <down> ' :nop<ret>'
 ###########
 
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
-set-option global plug_profiler false
 
 plug "https://github.com/Delapouite/kakoune-text-objects"
 plug "https://github.com/Delapouite/kakoune-auto-percent"
