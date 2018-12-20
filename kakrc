@@ -56,6 +56,18 @@ plug "https://github.com/occivink/kakoune-phantom-selection" %{
 plug "https://github.com/occivink/kakoune-sudo-write"
 plug "https://github.com/occivink/kakoune-vertical-selection"
 
+plug "https://github.com/danr/kakoune-easymotion" %{
+    declare-user-mode easy-motion
+    map global easy-motion j ' :easy-motion-j<ret>'
+    map global easy-motion k ' :easy-motion-k<ret>'
+    map global easy-motion w ' :easy-motion-w<ret>'
+    map global easy-motion b ' :easy-motion-b<ret>'
+    map global easy-motion W ' :easy-motion-W<ret>'
+    map global easy-motion B ' :easy-motion-B<ret>'
+    map global easy-motion f ' :easy-motion-f<ret>'
+    map global easy-motion <a-f> ' :easy-motion-alt-f<ret>'
+    map global user j ' :enter-user-mode easy-motion<ret>' -docstring 'easy motion'
+}
 
 plug "https://github.com/lenormf/kakoune-extra" load %{
     hatch_terminal.kak
