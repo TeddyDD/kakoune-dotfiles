@@ -371,6 +371,7 @@ map global spell c ': spell-clear<ret>' -docstring 'clear'
 map global normal '#' :comment-line<ret> -docstring 'comment line'
 map global normal <a-R> :surround<ret>
 map global normal D <a-x>d -docstring 'delete line'
+map global normal v V
 
 map global user '#' :comment-block<ret> -docstring 'Comment block'
 map global user </> /(?i) -docstring 'search case insensitive'
