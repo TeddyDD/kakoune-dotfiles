@@ -56,7 +56,7 @@ plug "https://github.com/occivink/kakoune-phantom-selection" %{
 plug "https://github.com/occivink/kakoune-sudo-write"
 plug "https://github.com/occivink/kakoune-vertical-selection"
 
-plug "https://github.com/danr/kakoune-easymotion" %{
+plug "https://github.com/danr/kakoune-easymotion" "commit: 40d73d"  %{
     declare-user-mode easy-motion
     map global easy-motion j ' :easy-motion-j<ret>'
     map global easy-motion k ' :easy-motion-k<ret>'
