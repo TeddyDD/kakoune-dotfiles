@@ -231,6 +231,7 @@ hook global BufCreate .*\.fnl %{
 # TIC-80 games written in fennel
 hook global BufCreate .*/TIC-80/fennel/.*\.lua %{
     set-option buffer filetype lisp
+    set-option buffer -add extra_word_chars -
     lsp-diagnostic-lines-disable
 }
 
