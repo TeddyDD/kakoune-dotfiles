@@ -21,6 +21,13 @@ source "%val{config}/utils.kak"
 # TEST #
 ########
 
+hook global NormalKey a %{
+	try %{
+		execute-keys -draft	'<a-k>\n<ret>'
+		execute-keys '<esc>A'
+	}
+}
+
 # fuck muscle memory
 
 map global normal <left> ' :nop<ret>'
