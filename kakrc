@@ -106,7 +106,7 @@ plug "https://github.com/eraserhd/kak-ansi"
 
 plug "eraserhd/parinfer-rust" do %{
     cargo build --release
-    cargo install
+    cargo install --force
 } %{
     hook -group parinfer global WinSetOption filetype=lisp %{
         parinfer -if-enabled -paren
