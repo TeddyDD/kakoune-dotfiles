@@ -94,7 +94,7 @@ plug "https://github.com/alexherbo2/distraction-free.kak"
 
 plug "https://github.com/alexherbo2/select.kak"
 plug "https://github.com/alexherbo2/yank-ring.kak" %{
-	map global user y :yank-ring<ret> -docstring 'yank ring'
+	map global user y :yank-ring-open<ret> -docstring 'yank ring'
 }
 
 plug "https://github.com/h-youhei/kakoune-each-line-selection"
