@@ -48,7 +48,10 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
 plug "https://github.com/Delapouite/kakoune-text-objects"
 plug "https://github.com/Delapouite/kakoune-auto-percent"
-plug "https://github.com/Delapouite/kakoune-buffers"
+plug "https://github.com/Delapouite/kakoune-buffers" %{
+    map global user b ':enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)…'
+    map global buffers r ':rofi-buffers<ret>' -docstring 'Rofi buffer list'
+}
 plug "https://github.com/Delapouite/kakoune-i3"
 plug "https://github.com/Delapouite/kakoune-mirror"
 plug "https://github.com/Delapouite/kakoune-palette"
@@ -94,7 +97,7 @@ plug "https://github.com/alexherbo2/distraction-free.kak"
 
 plug "https://github.com/alexherbo2/select.kak"
 plug "https://github.com/alexherbo2/yank-ring.kak" %{
-	map global user y :yank-ring-open<ret> -docstring 'yank ring'
+    map global user y :yank-ring-open<ret> -docstring 'yank ring'
 }
 
 plug "https://github.com/h-youhei/kakoune-each-line-selection"
@@ -113,7 +116,12 @@ plug "https://github.com/andreyorst/fzf.kak" %{
     map global user f ': fzf-mode<ret>' -docstring 'fzf'
 }
 
-plug "https://github.com/laelath/kakoune-show-matching-insert"
+plug "https://github.com/laelath/kakoune-show-matching-insert" %{
+    hook global KakBegin .* %{
+        add-highlighter global/matching_prev_char ranges show_matching_insert
+    }
+}
+
 
 plug "https://github.com/eraserhd/kak-ansi"
 
@@ -137,9 +145,9 @@ plug "https://github.com/TeddyDD/kakoune-wiki" %{
     map global user w :wiki<space> -docstring 'wiki'
 
     define-command diary %{
-    	edit ~/Notatki/wiki/dziennik-public.md
-    	execute-keys 'geo<esc>! date "+%Y-%m-%d: %H:%M"<ret>k'
-    	underline -
+        edit ~/Notatki/wiki/dziennik-public.md
+        execute-keys 'geo<esc>! date "+%Y-%m-%d: %H:%M"<ret>k'
+        underline -
     }
 }
 
@@ -177,7 +185,7 @@ define-command rofi-buffers \
     evaluate-commands %sh{
     BUFFER=$(echo ${kak_buflist} | tr ' ' '\n' | rofi -dmenu)
     if [ -n "$BUFFER" ]; then
-    	echo "eval -client '$kak_client' buffer ${BUFFER}" | kak -p ${kak_session}
+        echo "eval -client '$kak_client' buffer ${BUFFER}" | kak -p ${kak_session}
     fi
 } }
 
@@ -191,7 +199,7 @@ define-command file-find -params 1 -shell-script-candidates %{ find . -type f } 
 # This hook is executed every time buffer is open
 hook global BufOpenFile .* %{
     modeline-parse
-	editorconfig-load
+    editorconfig-load
 }
 
 # This hook is executed when Kakoune starts
@@ -235,7 +243,7 @@ hook global NormalKey y|d|c %{ nop %sh{
 
 # Fennel
 hook global BufCreate .*\.fnl %{
-	set-option buffer filetype lisp
+    set-option buffer filetype lisp
 }
 
 # TIC-80 games written in fennel
@@ -259,11 +267,11 @@ hook global  WinSetOption filetype=go %{
     #set buffer lintcmd '(gometalinter | grep -v "::\w") <'
     set buffer lintcmd 'revive'
     set buffer formatcmd 'goreturns'
-	unmap buffer normal "'"
-	map buffer normal "'" :enter-user-mode<space>gomode<ret>
-	hook buffer BufWritePre .* %{
-    	lsp-formatting
-	}
+    unmap buffer normal "'"
+    map buffer normal "'" :enter-user-mode<space>gomode<ret>
+    hook buffer BufWritePre .* %{
+        lsp-formatting
+    }
 }
 
 # go get -u arp242.net/goimport
@@ -314,16 +322,16 @@ hook global BufCreate .*Justfile %{
 # ##########
 
 hook global WinSetOption filetype=moon %{
-	set buffer tabstop 2
-	set buffer indentwidth 2
+    set buffer tabstop 2
+    set buffer indentwidth 2
 }
 
 # Crystal
 # #######
 
 hook global WinSetOption filetype=crystal %{
-	set buffer tabstop 2
-	set buffer indentwidth 2
+    set buffer tabstop 2
+    set buffer indentwidth 2
 }
 
 # CFDG
@@ -331,9 +339,9 @@ hook global WinSetOption filetype=crystal %{
 
 hook global WinSetOption filetype=cfdg %{
     hook buffer BufWritePost .* %{
-		cfdg-render
-	}
-	map buffer normal "'" :enter-user-mode<space>cfdgmode<ret>
+        cfdg-render
+    }
+    map buffer normal "'" :enter-user-mode<space>cfdgmode<ret>
 }
 
 declare-user-mode cfdgmode
@@ -357,7 +365,7 @@ hook -group git-commit-highlight global WinSetOption filetype=git-(commit|rebase
 # #####
 
 hook global WinSetOption filetype=sh %{
-	set-option buffer lintcmd "shellcheck -f gcc"
+    set-option buffer lintcmd "shellcheck -f gcc"
 }
 
 
@@ -398,8 +406,6 @@ map global user <a-w> ':toggle-highlighter wrap -word<ret>' -docstring "toggle w
 map global user <a-W> ':toggle-highlighter show-whitespaces<ret>' -docstring "toggle whitespaces"
 map global user W '|fmt --width 80<ret>:echo -markup Information formated selections<ret>' -docstring "Wrap to 80 columns"
 
-map global user b ':enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)…'
-map global buffers r ':rofi-buffers<ret>' -docstring 'Rofi buffer list'
 
 map global goto m '<esc>m;' -docstring 'matching char'
 
