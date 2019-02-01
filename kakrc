@@ -21,6 +21,12 @@ source "%val{config}/utils.kak"
 # TEST #
 ########
 
+define-command suspend -params 2 %{ evaluate-commands %sh{
+  nohup sh -c "sleep 0.2; xdotool type '$1'; xdotool key Return" > /dev/null 2>&1 &
+  /usr/bin/kill -SIGTSTP $kak_client_pid
+  echo "$2"
+}}
+
 hook global NormalKey a %{
 	try %{
 		execute-keys -draft	'<a-k>\n<ret>'
