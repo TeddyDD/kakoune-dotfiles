@@ -376,6 +376,7 @@ map global gomode i :go-import<space> -docstring 'import'
 map global gomode j :go-jump<ret> -docstring 'jump to definition'
 map global gomode d :go-doc-info<ret> -docstring 'documentation'
 map global gomode f :format<ret> -docstring 'format'
+map global gomode h :lsp-hover<ret> -docstring 'hover'
 
 # Justfile
 # ########
