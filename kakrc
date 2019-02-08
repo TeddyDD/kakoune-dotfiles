@@ -484,6 +484,6 @@ map global normal <space> ,
 map global user <space> <space>
 
 map global user -docstring "select inner " i <a-i>
-map global user -docstring "select outer"  o <a-a>
+map global user -docstring "select outer"  a <a-a>
 
 map global user -docstring "surround with" r :auto-pairs-surround<ret>
