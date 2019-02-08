@@ -77,7 +77,7 @@ define-command lf-file-select %{
 hook global NormalKey a %{
 	try %{
 		execute-keys -draft	'<a-k>\n<ret>'
-		execute-keys '<esc>A'
+		execute-keys '<a-;>H'
 	}
 }
 
