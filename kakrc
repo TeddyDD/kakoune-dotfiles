@@ -155,7 +155,7 @@ plug "https://gitlab.com/fsub/kakoune-mark" %{
     map global normal <f3> :mark-clear<ret>
 }
 
-plug "https://gitlab.com/notramo/crystal.kak.git"
+plug "https://gitlab.com/notramo/crystal.kak"
 
 plug "andreyorst/smarttab.kak"
 plug "https://github.com/andreyorst/fzf.kak" %{
