@@ -274,7 +274,6 @@ hook global BufOpenFile .* %{
 hook global KakBegin .* %{
     add-highlighter global/linenumbers number-lines -hlcursor -relative
 	add-highlighter global/matching_char show-matching
-	add-highlighter global/matching_prev_char ranges show_matching_insert
 }
 
 # Make directory if not exisit
