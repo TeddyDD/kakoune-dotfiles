@@ -22,6 +22,11 @@ define-command clean-up-whitespaces %{
     execute-keys -draft '%<a-s><a-K>^$<ret>s\h+$<ret>d'
 }
 
+
+define-command to-ascii %{
+  execute-keys '|iconv -f utf8 -t ascii//TRANSLIT<ret>'
+}
+
 ########################
 # TEXT EDITION HELPERS #
 ########################
