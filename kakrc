@@ -183,6 +183,27 @@ plug "eraserhd/parinfer-rust" do %{
         hook -group parinfer window InsertDelete .* %{ parinfer -if-enabled -smart }
     }
 } 
+
+plug "occivink/kakoune-snippets" config %{
+    set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-snippet-collection/snippets"
+    set-option global snippets_auto_expand false
+	define-command custom-expand-snippet %{
+    	try %{
+            snippets-expand-trigger %{
+                set-register / "%opt{snippets_triggers_regex}"
+                execute-keys 'h<a-b>s<ret>'
+            }
+            execute-keys '<esc>'
+    	}
+    }
+
+    map global insert <c-n> '<a-;>:custom-expand-snippet<ret>'
+    map global normal <c-n> ':snippets-select-next-placeholders<ret>'
+}
+
+plug "andreyorst/kakoune-snippet-collection"
+
+
 ##############
 # MY PLUGINS #
 ##############
