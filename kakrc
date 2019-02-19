@@ -75,10 +75,10 @@ define-command lf-file-select %{
 }
 
 hook global NormalKey a %{
-	try %{
-		execute-keys -draft	'<a-k>\n<ret>'
-		execute-keys '<a-;>H'
-	}
+    try %{
+        execute-keys -draft '<a-k>\n<ret>'
+        execute-keys '<a-;>H'
+    }
 }
 
 # fuck muscle memory
@@ -182,7 +182,7 @@ plug "eraserhd/parinfer-rust" do %{
         hook -group parinfer window InsertChar .* %{ parinfer -if-enabled -smart }
         hook -group parinfer window InsertDelete .* %{ parinfer -if-enabled -smart }
     }
-} 
+}
 
 plug "occivink/kakoune-snippets" config %{
     set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-snippet-collection/snippets"
@@ -275,7 +275,7 @@ hook global BufOpenFile .* %{
 # This hook is executed when Kakoune starts
 hook global KakBegin .* %{
     add-highlighter global/linenumbers number-lines -hlcursor -relative
-	add-highlighter global/matching_char show-matching
+    add-highlighter global/matching_char show-matching
 }
 
 # Make directory if not exisit
