@@ -187,17 +187,19 @@ plug "eraserhd/parinfer-rust" do %{
 plug "occivink/kakoune-snippets" config %{
     set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-snippet-collection/snippets"
     set-option global snippets_auto_expand false
-	define-command custom-expand-snippet %{
-    	try %{
+    define-command custom-expand-snippet %{
+        try %{
             snippets-expand-trigger %{
                 set-register / "%opt{snippets_triggers_regex}"
-                execute-keys 'h<a-b>s<ret>'
+                execute-keys '<a-b>s<ret>'
             }
             execute-keys '<esc>'
-    	}
+        }
     }
 
-    map global insert <c-n> '<a-;>:custom-expand-snippet<ret>'
+    map global insert <c-k> '<a-;>:custom-expand-snippet<ret>'
+    map global normal <c-k> ' :custom-expand-snippet<ret>'
+    map global insert <c-n> '<a-;>:snippets-select-next-placeholders<ret>'
     map global normal <c-n> ':snippets-select-next-placeholders<ret>'
 }
 
