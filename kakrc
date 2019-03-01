@@ -196,10 +196,19 @@ plug "occivink/kakoune-snippets" config %{
             execute-keys '<esc>'
         }
     }
-
+	define-command snippets-replace-next-placeholder %{ try %{
+		snippets-select-next-placeholders
+		evaluate-commands %sh{
+    	if [ "$kak_selection_length" = "1" ]; then
+    		echo execute-keys i
+		else
+    		echo execute-keys c
+    	fi
+		}
+	}}
     map global insert <c-k> '<a-;>:custom-expand-snippet<ret>'
     map global normal <c-k> ' :custom-expand-snippet<ret>'
-    map global insert <c-n> '<a-;>:snippets-select-next-placeholders<ret>'
+    map global insert <c-n> '<esc>:snippets-replace-next-placeholder<ret>'
     map global normal <c-n> ':snippets-select-next-placeholders<ret>'
 }
 
