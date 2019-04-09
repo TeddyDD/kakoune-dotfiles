@@ -135,7 +135,6 @@ plug "https://github.com/danr/kakoune-easymotion" commit 40d73d  %{
 
 plug "https://github.com/lenormf/kakoune-extra" load %{
     hatch_terminal.kak
-    lineindent.kak
 } %{
     alias global t hatch-terminal-x11
 }
@@ -158,9 +157,12 @@ plug "https://gitlab.com/fsub/kakoune-mark" %{
 
 plug "https://gitlab.com/notramo/crystal.kak"
 
+plug "https://github.com/Skytrias/gdscript-kak"
+
 plug "andreyorst/smarttab.kak"
+plug "andreyorst/kakoune-snippet-collection"
 plug "https://github.com/andreyorst/fzf.kak" %{
-    set-option global fzf_highlighter 'chroma -f terminal16m -s solarized-light {}'
+    set-option global fzf_highlight_cmd 'chroma -f terminal16m -s solarized-light {}'
     map global user f ': fzf-mode<ret>' -docstring 'fzf'
 }
 
@@ -213,7 +215,6 @@ plug "occivink/kakoune-snippets" config %{
     map global normal <c-n> ':snippets-select-next-placeholders<ret>'
 }
 
-plug "andreyorst/kakoune-snippet-collection"
 
 
 ##############
@@ -233,6 +234,7 @@ plug "https://github.com/TeddyDD/kakoune-wiki" %{
 
 plug "https://github.com/TeddyDD/kakoune-lf"
 plug "https://github.com/TeddyDD/kakoune-cfdg"
+plug "https://github.com/TeddyDD/kakoune-mint"
 
 plug "https://github.com/TeddyDD/kakoune-edit-or-dir" %{
     unalias global e
