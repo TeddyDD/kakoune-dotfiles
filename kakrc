@@ -157,6 +157,8 @@ plug "https://gitlab.com/fsub/kakoune-mark" %{
 
 plug "https://gitlab.com/notramo/crystal.kak"
 
+plug "https://github.com/Skytrias/gdscript-kak"
+
 plug "andreyorst/smarttab.kak"
 plug "https://github.com/andreyorst/fzf.kak" %{
     set-option global fzf_highlighter 'chroma -f terminal16m -s solarized-light {}'
