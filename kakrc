@@ -160,8 +160,9 @@ plug "https://gitlab.com/notramo/crystal.kak"
 plug "https://github.com/Skytrias/gdscript-kak"
 
 plug "andreyorst/smarttab.kak"
+plug "andreyorst/kakoune-snippet-collection"
 plug "https://github.com/andreyorst/fzf.kak" %{
-    set-option global fzf_highlighter 'chroma -f terminal16m -s solarized-light {}'
+    set-option global fzf_highlight_cmd 'chroma -f terminal16m -s solarized-light {}'
     map global user f ': fzf-mode<ret>' -docstring 'fzf'
 }
 
@@ -214,7 +215,6 @@ plug "occivink/kakoune-snippets" config %{
     map global normal <c-n> ':snippets-select-next-placeholders<ret>'
 }
 
-plug "andreyorst/kakoune-snippet-collection"
 
 
 ##############
