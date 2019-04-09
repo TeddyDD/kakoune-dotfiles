@@ -135,7 +135,6 @@ plug "https://github.com/danr/kakoune-easymotion" commit 40d73d  %{
 
 plug "https://github.com/lenormf/kakoune-extra" load %{
     hatch_terminal.kak
-    lineindent.kak
 } %{
     alias global t hatch-terminal-x11
 }
