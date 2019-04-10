@@ -141,6 +141,9 @@ plug "https://github.com/lenormf/kakoune-extra" load %{
 
 plug "https://github.com/alexherbo2/auto-pairs.kak" 
 plug "https://github.com/alexherbo2/distraction-free.kak"
+plug "https://github.com/alexherbo2/split-object.kak" %{
+    map global normal <a-I> ': enter-user-mode split-object<ret>'
+}
 
 plug "https://github.com/alexherbo2/select.kak"
 plug "https://github.com:TeddyDD/yank-ring.kak" %{
