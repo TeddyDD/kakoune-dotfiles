@@ -141,6 +141,7 @@ plug "https://github.com/lenormf/kakoune-extra" load %{
 
 plug "https://github.com/alexherbo2/auto-pairs.kak" 
 plug "https://github.com/alexherbo2/distraction-free.kak"
+plug "https://github.com/alexherbo2/connect.kak"
 plug "https://github.com/alexherbo2/split-object.kak" %{
     map global normal <a-I> ': enter-user-mode split-object<ret>'
 }
@@ -496,9 +497,8 @@ map global goto m '<esc>m;' -docstring 'matching char'
 
 map global user c ':cd-to-buffer-dir<ret>' -docstring 'cd to buffer directory'
 
-
 map global normal <space> ,
-map global user <space> <space>
+map global user <space> <space> -docstring 'Clear selections'
 
 map global user -docstring "select inner " i <a-i>
 map global user -docstring "select outer"  a <a-a>
