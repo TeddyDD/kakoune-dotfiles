@@ -141,6 +141,7 @@ plug "https://github.com/lenormf/kakoune-extra" load %{
 
 plug "https://github.com/alexherbo2/auto-pairs.kak" 
 plug "https://github.com/alexherbo2/distraction-free.kak"
+plug "https://github.com/alexherbo2/connect.kak"
 
 plug "https://github.com/alexherbo2/select.kak"
 plug "https://github.com:TeddyDD/yank-ring.kak" %{
