@@ -494,9 +494,8 @@ map global goto m '<esc>m;' -docstring 'matching char'
 
 map global user c ':cd-to-buffer-dir<ret>' -docstring 'cd to buffer directory'
 
-
 map global normal <space> ,
-map global user <space> <space>
+map global user <space> <space> -docstring 'Clear selections'
 
 map global user -docstring "select inner " i <a-i>
 map global user -docstring "select outer"  a <a-a>
