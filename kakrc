@@ -153,6 +153,11 @@ plug "https://github.com:TeddyDD/yank-ring.kak" %{
 
 plug "https://github.com/h-youhei/kakoune-each-line-selection"
 plug "https://github.com/h-youhei/kakoune-surround"
+plug "https://github.com/h-youhei/kakoune-close-tag" %{
+	define-command close-tag-enable %{
+		map global insert '<c-t>' '<esc>:close-tag<ret>i'
+	}
+}
 
 plug "https://gitlab.com/fsub/kakoune-mark" %{
     map global normal <f2> <a-i>w:mark-word<ret>
