@@ -147,7 +147,7 @@ plug "https://github.com/alexherbo2/split-object.kak" %{
 }
 
 plug "https://github.com/alexherbo2/select.kak"
-plug "https://github.com:TeddyDD/yank-ring.kak" %{
+plug "https://github.com/TeddyDD/yank-ring.kak" %{
     map global user y :yank-ring-open<ret> -docstring 'yank ring'
 }
 
