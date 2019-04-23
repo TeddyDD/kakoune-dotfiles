@@ -31,7 +31,7 @@ define-command snakecase %{
 }
 
 define-command -params 1 underline %{
-    %sh{ echo "execute-keys -draft xy<a-h><a-l>PS.<ret>c$1<esc><space>h;"
+    evaluate-commands %sh{ echo "execute-keys -draft xy<a-h><a-l>PS.<ret>c$1<esc><space>h;"
 }}
 alias global u underline
 
