@@ -1,0 +1,11 @@
+startshape ${1:Main} []
+
+shape ${1} {
+	${2:MyShape} [$3]
+}
+
+shape $2 {
+	${4:SQUARE} [$5]
+}
+
+$0
