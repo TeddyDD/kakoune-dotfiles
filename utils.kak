@@ -26,10 +26,6 @@ define-command to-ascii %{
   execute-keys '|iconv -f utf8 -t ascii//TRANSLIT<ret>'
 }
 
-define-command snakecase %{
-    execute-keys '<a-:><a-;>s-|[a-z][A-Z]<ret>\;a<space><esc>s[-\s]+<ret>c_<esc><a-i>w`'
-}
-
 define-command -params 1 underline %{
     evaluate-commands %sh{ echo "execute-keys -draft xy<a-h><a-l>PS.<ret>c$1<esc><space>h;"
 }}
