@@ -42,20 +42,21 @@ plug "https://github.com/danr/kakoune-easymotion" commit 40d73d  %{
     map global user j ' :enter-user-mode easy-motion<ret>' -docstring 'easy motion'
 }
 
-plug "https://github.com/alexherbo2/auto-pairs.kak" 
+plug "https://github.com/alexherbo2/auto-pairs.kak" %{
+    map global user -docstring "surround with" r ': auto-pairs-surround<ret>'
+}
 plug "https://github.com/alexherbo2/distraction-free.kak"
 plug "https://github.com/alexherbo2/connect.kak"
 plug "https://github.com/alexherbo2/select.kak"
 plug "https://github.com/alexherbo2/split-object.kak" %{
     map global normal <a-I> ': enter-user-mode split-object<ret>'
-}
-plug "alexherbo2/move-line.kak" config %{
-    map global normal '<c-up>'   ': move-line-above %val{count}<ret>'
-    map global normal '<c-down>' ': move-line-below %val{count}<ret>'
+    map global user I ': enter-user-mode split-object<ret>' -docstring 'Split objetcs'
 }
 
 plug "https://github.com/h-youhei/kakoune-each-line-selection"
-plug "https://github.com/h-youhei/kakoune-surround"
+plug "https://github.com/h-youhei/kakoune-surround" %{
+    map global normal <a-R> ': surround<ret>' -docstring 'surround'
+}
 plug "https://github.com/h-youhei/kakoune-close-tag" %{
 	define-command close-tag-enable %{
 		map global insert '<c-t>' '<esc>:close-tag<ret>i'

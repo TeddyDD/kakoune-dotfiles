@@ -12,7 +12,6 @@ map global spell c ': spell-clear<ret>' -docstring 'clear'
 
 
 map global normal '#' ': comment-line<ret>' -docstring 'comment line'
-map global normal <a-R> ': surround<ret>' -docstring 'surround'
 map global normal D <a-x>d -docstring 'delete line'
 
 map global user '#' ': comment-block<ret>' -docstring 'Comment block'
@@ -41,4 +40,3 @@ map global user <space> <space> -docstring 'Clear selections'
 map global user -docstring "select inner " i <a-i>
 map global user -docstring "select outer"  a <a-a>
 
-map global user -docstring "surround with" r ': auto-pairs-surround<ret>'
