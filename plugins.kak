@@ -42,12 +42,6 @@ plug "https://github.com/danr/kakoune-easymotion" commit 40d73d  %{
     map global user j ' :enter-user-mode easy-motion<ret>' -docstring 'easy motion'
 }
 
-plug "https://github.com/lenormf/kakoune-extra" load %{
-    hatch_terminal.kak
-} %{
-    alias global t hatch-terminal-x11
-}
-
 plug "https://github.com/alexherbo2/auto-pairs.kak" 
 plug "https://github.com/alexherbo2/distraction-free.kak"
 plug "https://github.com/alexherbo2/connect.kak"

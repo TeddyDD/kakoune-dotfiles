@@ -164,3 +164,9 @@ define-command lf-file-select %{
         "lf -selection-path /tmp/ranger-files-%val{client_pid}" \
         "for-each-line edit /tmp/ranger-files-%val{client_pid}"
 }
+
+define-command t -docstring 'Open terminal in cwd' %{
+    evaluate-commands %sh{
+		echo "terminal /usr/bin/fish -iC 'cd ''$(pwd)'''"
+    }
+}
