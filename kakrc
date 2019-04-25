@@ -11,9 +11,6 @@
 # load global settings
 source "%val{config}/global.kak"
 
-# host specific settings
-try %{ source %sh{ echo "$kak_config/$(hostname).kak" } }
-
 # load utils
 source "%val{config}/utils.kak"
 
@@ -34,3 +31,6 @@ source "%val{config}/filetypes.kak"
 
 # load key maps
 source "%val{config}/mappings.kak"
+
+# host specific settings
+try %{ source %sh{ echo "$kak_config/$(hostname).kak" } }
