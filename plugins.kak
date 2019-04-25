@@ -2,6 +2,8 @@
 # PLUGINS #
 ###########
 
+plug "andreyorst/plug.kak" noload
+
 plug "https://github.com/Delapouite/kakoune-text-objects"
 plug "https://github.com/Delapouite/kakoune-auto-percent"
 plug "https://github.com/Delapouite/kakoune-buffers" %{
