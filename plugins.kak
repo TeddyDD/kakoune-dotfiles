@@ -161,3 +161,5 @@ plug "https://github.com/TeddyDD/kakoune-edit-or-dir" %{
 plug "https://github.com/TeddyDD/yank-ring.kak" %{
     map global user y :yank-ring-open<ret> -docstring 'yank ring'
 }
+
+plug "https://github.com/robertmeta/nofrils-kakoune" theme
