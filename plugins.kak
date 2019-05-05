@@ -152,6 +152,7 @@ plug "https://github.com/TeddyDD/kakoune-wiki" %{
 plug "https://github.com/TeddyDD/kakoune-lf"
 plug "https://github.com/TeddyDD/kakoune-cfdg"
 plug "https://github.com/TeddyDD/kakoune-mint"
+plug "https://github.com/TeddyDD/kakoune-selenized" theme
 
 plug "https://github.com/TeddyDD/kakoune-edit-or-dir" %{
     unalias global e
