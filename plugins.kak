@@ -92,7 +92,7 @@ plug "https://github.com/laelath/kakoune-show-matching-insert" %{
 
 plug "https://github.com/eraserhd/kak-ansi"
 
-plug "eraserhd/parinfer-rust" do %{
+plug "eraserhd/parinfer-rust" commit 98b80a do %{
     cargo build --release
     cargo install --force
 } %{
