@@ -76,7 +76,7 @@ plug "https://gitlab.com/notramo/crystal.kak"
 
 plug "andreyorst/smarttab.kak"
 plug "andreyorst/kakoune-snippet-collection"
-plug "https://github.com/andreyorst/fzf.kak" %{
+plug "https://github.com/andreyorst/fzf.kak"  commit "b924eaa" %{
     set-option global fzf_highlight_cmd 'chroma -f terminal16m -s solarized-light {}'
     set-option global fzf_file_command 'fd -I --type f --follow'
     set-option global fzf_sk_grep_command "rg -niL"
