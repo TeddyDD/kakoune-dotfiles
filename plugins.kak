@@ -165,3 +165,4 @@ plug "https://github.com/TeddyDD/yank-ring.kak" %{
 }
 
 plug "https://github.com/robertmeta/nofrils-kakoune" theme
+plug "ath3/explain-shell.kak"
