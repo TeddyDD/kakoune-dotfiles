@@ -8,7 +8,8 @@ plug "https://github.com/Delapouite/kakoune-text-objects"
 plug "https://github.com/Delapouite/kakoune-auto-percent"
 plug "https://github.com/Delapouite/kakoune-buffers" %{
     map global user b ':enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)…'
-    map global buffers r ':rofi-buffers<ret>' -docstring 'Rofi buffer list'
+    map global buffers r ':rofi-buffers<ret>' -docstring 'rofi buffer list'
+    map global buffers b ':fzf-buffer<ret>' -docstring 'Fzf buffer list'
 }
 
 # plug "https://github.com/Delapouite/kakoune-i3"

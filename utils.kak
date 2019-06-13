@@ -166,3 +166,7 @@ define-command t -docstring 'Open terminal in cwd' %{
 		echo "terminal /usr/bin/fish -iC 'cd ''$(pwd)'''"
     }
 }
+
+define-command kakrc -docstring 'edit kakrc' %{
+	edit "%val{config}/kakrc"
+}
