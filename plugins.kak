@@ -164,5 +164,9 @@ plug "https://github.com/TeddyDD/yank-ring.kak" %{
     map global user y :yank-ring-open<ret> -docstring 'yank ring'
 }
 
+plug "TeddyDD/kakoune-pixilang" %{
+	set-option global pixilang_path "~/Pobrane/pixilang/pixilang/linux_x86_64/pixilang"
+}
+
 plug "https://github.com/robertmeta/nofrils-kakoune" theme
 plug "ath3/explain-shell.kak"
