@@ -40,3 +40,4 @@ map global normal <a-,> <a-space> -docstring 'Clear main selection'
 map global user -docstring "select inner " i <a-i>
 map global user -docstring "select outer"  a <a-a>
 
+map global normal = ':prompt math: %{exec "a%val{text}<lt>esc>|bc<lt>ret>"}<ret>'
