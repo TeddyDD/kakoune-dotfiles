@@ -67,8 +67,8 @@ plug "https://github.com/h-youhei/kakoune-close-tag" %{
 }
 
 plug "https://gitlab.com/fsub/kakoune-mark" %{
-    map global normal <f2> <a-i>w:mark-word<ret>
-    map global normal <f3> :mark-clear<ret>
+    map global normal <F2> <a-i>w:mark-word<ret>
+    map global normal <F3> :mark-clear<ret>
 }
 
 plug "https://gitlab.com/notramo/crystal.kak"
@@ -77,11 +77,12 @@ plug "https://gitlab.com/notramo/crystal.kak"
 
 plug "andreyorst/smarttab.kak"
 plug "andreyorst/kakoune-snippet-collection"
-plug "https://github.com/andreyorst/fzf.kak"  commit "b924eaa" %{
+plug "https://github.com/andreyorst/fzf.kak" config %{
+    map global user f ': fzf-mode<ret>' -docstring 'fzf'
+} defer "fzf" %{
     set-option global fzf_highlight_cmd 'chroma -f terminal16m -s solarized-light {}'
     set-option global fzf_file_command 'fd -I --type f --follow'
     set-option global fzf_sk_grep_command "rg -niL"
-    map global user f ': fzf-mode<ret>' -docstring 'fzf'
 }
 
 plug "https://github.com/laelath/kakoune-show-matching-insert" %{
@@ -93,7 +94,7 @@ plug "https://github.com/laelath/kakoune-show-matching-insert" %{
 
 plug "https://github.com/eraserhd/kak-ansi"
 
-plug "eraserhd/parinfer-rust" commit 98b80a do %{
+plug "eraserhd/parinfer-rust" do %{
     cargo build --release
     cargo install --force
 } %{
