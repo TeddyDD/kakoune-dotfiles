@@ -4,23 +4,23 @@
 
 plug "andreyorst/plug.kak" noload
 
-plug "https://github.com/Delapouite/kakoune-text-objects"
-plug "https://github.com/Delapouite/kakoune-auto-percent"
-plug "https://github.com/Delapouite/kakoune-buffers" %{
+plug "Delapouite/kakoune-text-objects"
+plug "Delapouite/kakoune-auto-percent"
+plug "Delapouite/kakoune-buffers" %{
     map global user b ':enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)…'
     map global buffers r ':rofi-buffers<ret>' -docstring 'rofi buffer list'
     map global buffers b ':fzf-buffer<ret>' -docstring 'Fzf buffer list'
 }
 
-# plug "https://github.com/Delapouite/kakoune-i3"
-plug "https://github.com/Delapouite/kakoune-mirror"
-plug "https://github.com/Delapouite/kakoune-palette"
-plug "https://github.com/Delapouite/kakoune-select-view"
+# plug "Delapouite/kakoune-i3"
+plug "Delapouite/kakoune-mirror"
+plug "Delapouite/kakoune-palette"
+plug "Delapouite/kakoune-select-view"
 
-plug "https://github.com/occivink/kakoune-find"
-plug "https://github.com/occivink/kakoune-expand"
+plug "occivink/kakoune-find"
+plug "occivink/kakoune-expand"
 
-plug "https://github.com/occivink/kakoune-phantom-selection" %{
+plug "occivink/kakoune-phantom-selection" %{
     map global insert '<c-a>' '<esc>:phantom-sel-iterate-next<ret>'
     map global insert '<c-w>' '<esc>:phantom-sel-select-all<ret>'
     map global normal '<c-a>' ':phantom-sel-iterate-next<ret>'
@@ -29,10 +29,10 @@ plug "https://github.com/occivink/kakoune-phantom-selection" %{
     map global normal '<c-w>' ':phantom-sel-select-all<ret>'
 }
 
-plug "https://github.com/occivink/kakoune-sudo-write"
-plug "https://github.com/occivink/kakoune-vertical-selection"
+plug "occivink/kakoune-sudo-write"
+plug "occivink/kakoune-vertical-selection"
 
-plug "https://github.com/danr/kakoune-easymotion" commit 40d73d  %{
+plug "danr/kakoune-easymotion" commit 40d73d  %{
     declare-user-mode easy-motion
     map global easy-motion j ' :easy-motion-j<ret>'
     map global easy-motion k ' :easy-motion-k<ret>'
@@ -45,22 +45,22 @@ plug "https://github.com/danr/kakoune-easymotion" commit 40d73d  %{
     map global user j ' :enter-user-mode easy-motion<ret>' -docstring 'easy motion'
 }
 
-plug "https://github.com/alexherbo2/auto-pairs.kak" %{
+plug "alexherbo2/auto-pairs.kak" %{
     map global user -docstring "surround with" r ': auto-pairs-surround<ret>'
 }
-plug "https://github.com/alexherbo2/distraction-free.kak"
-plug "https://github.com/alexherbo2/connect.kak"
-plug "https://github.com/alexherbo2/select.kak"
-plug "https://github.com/alexherbo2/split-object.kak" %{
+plug "alexherbo2/distraction-free.kak"
+plug "alexherbo2/connect.kak"
+plug "alexherbo2/select.kak"
+plug "alexherbo2/split-object.kak" %{
     map global normal <a-I> ': enter-user-mode split-object<ret>'
     map global user I ': enter-user-mode split-object<ret>' -docstring 'Split objetcs'
 }
 
-plug "https://github.com/h-youhei/kakoune-each-line-selection"
-plug "https://github.com/h-youhei/kakoune-surround" %{
+plug "h-youhei/kakoune-each-line-selection"
+plug "h-youhei/kakoune-surround" %{
     map global normal <a-R> ': surround<ret>' -docstring 'surround'
 }
-plug "https://github.com/h-youhei/kakoune-close-tag" %{
+plug "h-youhei/kakoune-close-tag" %{
 	define-command close-tag-enable %{
 		map global insert '<c-t>' '<esc>:close-tag<ret>i'
 	}
@@ -73,11 +73,11 @@ plug "https://gitlab.com/fsub/kakoune-mark" %{
 
 plug "https://gitlab.com/notramo/crystal.kak"
 
-# plug "https://github.com/Skytrias/gdscript-kak"
+# plug "Skytrias/gdscript-kak"
 
 plug "andreyorst/smarttab.kak"
 plug "andreyorst/kakoune-snippet-collection"
-plug "https://github.com/andreyorst/fzf.kak" config %{
+plug "andreyorst/fzf.kak" config %{
     map global user f ': fzf-mode<ret>' -docstring 'fzf'
 } defer "fzf" %{
     set-option global fzf_highlight_cmd 'chroma -f terminal16m -s solarized-light {}'
@@ -85,14 +85,14 @@ plug "https://github.com/andreyorst/fzf.kak" config %{
     set-option global fzf_sk_grep_command "rg -niL"
 }
 
-plug "https://github.com/laelath/kakoune-show-matching-insert" %{
+plug "laelath/kakoune-show-matching-insert" %{
     hook global KakBegin .* %{
         add-highlighter global/matching_prev_char ranges show_matching_insert
     }
 }
 
 
-plug "https://github.com/eraserhd/kak-ansi"
+plug "eraserhd/kak-ansi"
 
 plug "eraserhd/parinfer-rust" do %{
     cargo build --release
@@ -140,7 +140,7 @@ plug "occivink/kakoune-snippets" config %{
 
 # My plugins
 
-plug "https://github.com/TeddyDD/kakoune-wiki" %{
+plug "TeddyDD/kakoune-wiki" %{
     wiki_setup "/home/teddy/Notatki/wiki"
     map global user w :wiki<space> -docstring 'wiki'
 
@@ -151,17 +151,17 @@ plug "https://github.com/TeddyDD/kakoune-wiki" %{
     }
 }
 
-plug "https://github.com/TeddyDD/kakoune-lf"
-plug "https://github.com/TeddyDD/kakoune-cfdg"
-plug "https://github.com/TeddyDD/kakoune-mint"
-plug "https://github.com/TeddyDD/kakoune-selenized" theme
+plug "TeddyDD/kakoune-lf"
+plug "TeddyDD/kakoune-cfdg"
+plug "TeddyDD/kakoune-mint"
+plug "TeddyDD/kakoune-selenized" theme
 
-plug "https://github.com/TeddyDD/kakoune-edit-or-dir" %{
+plug "TeddyDD/kakoune-edit-or-dir" %{
     unalias global e
     alias global e edit-or-dir
 }
 
-plug "https://github.com/TeddyDD/yank-ring.kak" %{
+plug "TeddyDD/yank-ring.kak" %{
     map global user y :yank-ring-open<ret> -docstring 'yank ring'
 }
 
@@ -169,5 +169,5 @@ plug "TeddyDD/kakoune-pixilang" %{
 	set-option global pixilang_path "~/Pobrane/pixilang/pixilang/linux_x86_64/pixilang"
 }
 
-plug "https://github.com/robertmeta/nofrils-kakoune" theme
+plug "robertmeta/nofrils-kakoune" theme
 plug "ath3/explain-shell.kak"
