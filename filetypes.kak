@@ -115,3 +115,7 @@ hook global WinSetOption filetype=sh %{
 hook global BufOpenFile '.*/colors/.*[.]kak' %{
     show-color-hook
 }
+
+hook global BufOpenFile '.*\.env.*' %{
+    set-option buffer filetype "ini"
+}
