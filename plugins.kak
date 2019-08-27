@@ -12,7 +12,7 @@ plug "Delapouite/kakoune-buffers" %{
     map global buffers b ':fzf-buffer<ret>' -docstring 'Fzf buffer list'
 }
 
-# plug "Delapouite/kakoune-i3"
+
 plug "Delapouite/kakoune-mirror"
 plug "Delapouite/kakoune-palette"
 plug "Delapouite/kakoune-select-view"
@@ -80,7 +80,7 @@ plug "andreyorst/kakoune-snippet-collection"
 plug "andreyorst/fzf.kak" config %{
     map global user f ': fzf-mode<ret>' -docstring 'fzf'
 } defer "fzf" %{
-    set-option global fzf_highlight_cmd 'chroma -f terminal16m -s solarized-light {}'
+    set-option global fzf_highlight_command 'chroma -f terminal16m -s solarized-light {}'
     set-option global fzf_file_command 'fd -I --type f --follow'
     set-option global fzf_sk_grep_command "rg -niL"
 }
@@ -90,7 +90,6 @@ plug "laelath/kakoune-show-matching-insert" %{
         add-highlighter global/matching_prev_char ranges show_matching_insert
     }
 }
-
 
 plug "eraserhd/kak-ansi"
 
