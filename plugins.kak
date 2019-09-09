@@ -80,7 +80,7 @@ plug "andreyorst/kakoune-snippet-collection"
 plug "andreyorst/fzf.kak" config %{
     map global user f ': fzf-mode<ret>' -docstring 'fzf'
 } defer "fzf" %{
-    set-option global fzf_highlight_cmd 'chroma -f terminal16m -s solarized-light {}'
+    set-option global fzf_highlight_command 'chroma -f terminal16m -s solarized-light {}'
     set-option global fzf_file_command 'fd -I --type f --follow'
     set-option global fzf_sk_grep_command "rg -niL"
 }
