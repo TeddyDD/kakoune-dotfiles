@@ -85,6 +85,12 @@ plug "andreyorst/fzf.kak" config %{
     set-option global fzf_sk_grep_command "rg -niL"
 }
 
+plug "andreyorst/tagbar.kak" defer "tagbar" %{
+    set-option global tagbar_sort false
+    set-option global tagbar_size 40
+    set-option global tagbar_display_anon false
+}
+
 plug "laelath/kakoune-show-matching-insert" %{
     hook global KakBegin .* %{
         add-highlighter global/matching_prev_char ranges show_matching_insert
