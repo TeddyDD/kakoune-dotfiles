@@ -28,7 +28,7 @@ map global user <a-w> ': toggle-highlighter wrap -word<ret>' -docstring "toggle 
 map global user <a-W> ': toggle-highlighter show-whitespaces<ret>' -docstring "toggle whitespaces"
 map global user W '|fmt --width 80<ret>: echo -markup Information formated selections<ret>' -docstring "Wrap to 80 columns"
 map global user <space> '<esc>:' -docstring 'Command prompt'
-
+map global user l ': enter-user-mode lsp<ret>' -docstring "Language Server"
 
 map global goto m '<esc>m;' -docstring 'matching char'
 
