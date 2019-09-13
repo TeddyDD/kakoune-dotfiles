@@ -19,8 +19,12 @@ hook global WinSetOption filetype=markdown %{
     set-option window lintcmd "%val{config}/bin/mdlint"
 }
 
+hook global WinSetOption filetype=python %{
+    expandtab
+}
+
 # Go
-hook global  WinSetOption filetype=go %{
+hook global WinSetOption filetype=go %{
     #set buffer lintcmd '(gometalinter | grep -v "::\w") <'
     set buffer lintcmd 'revive'
     set buffer formatcmd 'goreturns'
