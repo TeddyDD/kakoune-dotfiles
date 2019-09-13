@@ -19,6 +19,7 @@ plug "Delapouite/kakoune-select-view"
 
 plug "occivink/kakoune-find"
 plug "occivink/kakoune-expand"
+plug "occivink/kakoune-sort-selections"
 
 plug "occivink/kakoune-phantom-selection" %{
     map global insert '<c-a>' '<esc>:phantom-sel-iterate-next<ret>'
