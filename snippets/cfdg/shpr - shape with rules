@@ -1,5 +1,0 @@
-shape ${1:Name} 
-rule ${2:50%} {
-	${3:SQUARE} [$4]
-}
-$0
