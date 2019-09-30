@@ -1,4 +1,4 @@
-hook global BufCreate "(.+\.(groovy|gvy|gy|gsh))|[Jj]enkinsfile.*" %{
+hook global BufCreate "(.+\.(groovy|gvy|gy|gsh))|.+[Jj]enkinsfile.*" %{
 	set-option buffer filetype groovy
 }
 
