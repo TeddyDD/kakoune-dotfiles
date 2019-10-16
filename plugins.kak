@@ -13,7 +13,9 @@ plug "Delapouite/kakoune-buffers" %{
 }
 
 
-plug "Delapouite/kakoune-mirror"
+plug "Delapouite/kakoune-mirror" %{
+	map global user m ' :enter-user-mode -lock mirror<ret>' -docstring 'mirror mode'
+}
 plug "Delapouite/kakoune-palette"
 plug "Delapouite/kakoune-select-view"
 
