@@ -21,18 +21,23 @@ add-highlighter shared/groovy/single_string region "'"   (?<!\\)(\\\\)*'  fill s
 add-highlighter shared/groovy/comment1 region '/\*[^*]?' '\*/' fill comment
 add-highlighter shared/groovy/comment2 region '//[^/]?' $ fill comment
 add-highlighter shared/groovy/shellbang region '#!.+' $ fill comment
+add-highlighter shared/groovy/slashy_string region "/" "(?<!\\)/"   fill string
+add-highlighter shared/groovy/dollar_string region "\$/" "(?<!\$)/\$"   fill string
 # add-highlighter shared/groovy/code/identifiers regex '\b[$_]?[a-zA-Z0-9_]+\b' 0:variable
+add-highlighter shared/groovy/code/declaration regex "(?<typ>\w+)(?:\[.*?\])?\s+(\$?\w+)\s=" typ:type
 
 evaluate-commands %sh{
     keywords="as|assert|break|case|catch|class|const|continue|def|default"
     keywords="${keywords}|do|else|enum|extends|finally|for|goto|if|implements|import|in"
     keywords="${keywords}|instanceof|interface|new|package|return|super|switch|this|throw"
     keywords="${keywords}|throws|trait|try|while"
-    types="true|false|null"
+    builtins="true|false|null"
+	types="byte|char|short|int|long|BigInteger|float|double|BigDecimal|boolean"
 
 	printf %s "
 		add-highlighter shared/groovy/code/keyword regex \b(${keywords})\b 0:keyword
-		add-highlighter shared/groovy/code/builtin regex \b(${types})\b 0:builtin
+		add-highlighter shared/groovy/code/builtin regex \b(${builtins})\b 0:builtin
+		add-highlighter shared/groovy/code/types   regex \b(${types})\b    0:type
 	"
 }
 
