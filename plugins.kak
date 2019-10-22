@@ -20,7 +20,9 @@ plug 'delapouite/kakoune-hump' %{
 }
 
 
-plug "Delapouite/kakoune-mirror"
+plug "Delapouite/kakoune-mirror" %{
+	map global user m ' :enter-user-mode -lock mirror<ret>' -docstring 'mirror mode'
+}
 plug "Delapouite/kakoune-palette"
 plug "Delapouite/kakoune-select-view"
 
@@ -29,12 +31,12 @@ plug "occivink/kakoune-expand"
 plug "occivink/kakoune-sort-selections"
 
 plug "occivink/kakoune-phantom-selection" %{
-    map global insert '<c-a>' '<esc>:phantom-sel-iterate-next<ret>'
-    map global insert '<c-w>' '<esc>:phantom-sel-select-all<ret>'
-    map global normal '<c-a>' ':phantom-sel-iterate-next<ret>'
-    map global normal '<c-q>' ':phantom-sel-clear'
-    map global normal '<c-q>' '<esc>:phantom-sel-clear<ret>'
-    map global normal '<c-w>' ':phantom-sel-select-all<ret>'
+    map global insert '<c-a>' '<esc>:phantom-selection-iterate-next<ret>'
+    map global insert '<c-w>' '<esc>:phantom-selection-select-all<ret>'
+    map global normal '<c-a>' ':phantom-selection-iterate-next<ret>'
+    map global normal '<c-q>' ':phantom-selection-clear'
+    map global normal '<c-q>' '<esc>:phantom-selection-clear<ret>'
+    map global normal '<c-w>' ':phantom-selection-select-all<ret>'
 }
 
 plug "occivink/kakoune-sudo-write"
