@@ -12,6 +12,13 @@ plug "Delapouite/kakoune-buffers" %{
     map global buffers b ':fzf-buffer<ret>' -docstring 'Fzf buffer list'
 }
 
+plug 'delapouite/kakoune-hump' %{
+  map global normal '”' ': select-previous-hump<ret>' -docstring 'select prev hump'
+  map global normal 'œ' ': select-next-hump<ret>'     -docstring 'select next hump'
+  map global normal '“' ': extend-previous-hump<ret>' -docstring 'extend prev hump'
+  map global normal 'Œ' ': extend-next-hump<ret>'     -docstring 'extend next hump'
+}
+
 
 plug "Delapouite/kakoune-mirror"
 plug "Delapouite/kakoune-palette"
@@ -178,3 +185,4 @@ plug "TeddyDD/kakoune-pixilang" %{
 
 plug "robertmeta/nofrils-kakoune" theme
 plug "ath3/explain-shell.kak"
+plug "chambln/kakoune-smart-quotes"
