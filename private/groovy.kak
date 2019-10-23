@@ -25,6 +25,7 @@ add-highlighter shared/groovy/slashy_string region "/" "(?<!\\)/"   fill string
 add-highlighter shared/groovy/dollar_string region "\$/" "(?<!\$)/\$"   fill string
 # add-highlighter shared/groovy/code/identifiers regex '\b[$_]?[a-zA-Z0-9_]+\b' 0:variable
 add-highlighter shared/groovy/code/declaration regex "(?<typ>\w+)(?:\[.*?\])?\s+(\$?\w+)\s=" typ:type
+add-highlighter shared/groovy/code/numbers regex '\b[-+]?0x[A-Fa-f0-9_]+[.A-Fa-f0-9_p]*[lLiDgGIF]?|\b[-+]?[\d]+b?[.p_\dEe]*[lLiDgGIF]?' 0:value
 
 evaluate-commands %sh{
     keywords="as|assert|break|case|catch|class|const|continue|def|default"
