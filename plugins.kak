@@ -27,7 +27,9 @@ plug "Delapouite/kakoune-palette"
 plug "Delapouite/kakoune-select-view"
 
 plug "occivink/kakoune-find"
-plug "occivink/kakoune-expand"
+plug "occivink/kakoune-expand" %{
+    map global normal '+' ': expand<ret>' -docstring 'Expand Selection'
+}
 plug "occivink/kakoune-sort-selections"
 
 plug "occivink/kakoune-phantom-selection" %{

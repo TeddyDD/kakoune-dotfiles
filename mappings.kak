@@ -16,7 +16,6 @@ map global normal D <a-x>d -docstring 'delete line'
 
 map global user '#' ': comment-block<ret>' -docstring 'Comment block'
 map global user </> /(?i) -docstring 'search case insensitive'
-map global user e ': expand<ret>' -docstring 'Expand Selection'
 map global user g ': grep ''''<left>' -docstring 'RipGrep'
 map global user s ': enter-user-mode spell<ret>' -docstring 'Spell mode'
 
