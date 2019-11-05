@@ -170,3 +170,14 @@ define-command t -docstring 'Open terminal in cwd' %{
 define-command kakrc -docstring 'edit kakrc' %{
 	edit "%val{config}/kakrc"
 }
+
+declare-option -hidden str cheat_filetype
+define-command -params 1.. cheat -docstring "cheat QUERY
+cheat.sh lookup" \
+%{
+    set-option global cheat_filetype %opt{filetype}
+    try %{ delete-buffer! *cheat* }
+    edit -scratch *cheat*
+    execute-keys "!curl cheat.sh/%opt{cheat_filetype}/%sh{echo $@ | tr ' ' '+'}<ret>"
+    ansi-render
+}
