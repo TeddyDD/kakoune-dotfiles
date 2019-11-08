@@ -48,9 +48,7 @@ plug "danr/kakoune-easymotion" commit 40d73d  %{
     map global user j ' :enter-user-mode easymotion<ret>' -docstring 'easy motion'
 }
 
-plug "alexherbo2/auto-pairs.kak" %{
-    map global user -docstring "surround with" r ': auto-pairs-surround<ret>'
-}
+plug "alexherbo2/auto-pairs.kak" 
 plug "alexherbo2/distraction-free.kak"
 plug "alexherbo2/connect.kak"
 plug "alexherbo2/select.kak"
