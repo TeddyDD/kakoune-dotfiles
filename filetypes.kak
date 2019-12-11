@@ -7,6 +7,10 @@ hook global BufCreate .*\.fnl %{
     set-option buffer filetype lisp
 }
 
+hook global BufCreate .*\.janet %{
+    set-option buffer filetype lisp
+}
+
 # TIC-80 games written in fennel
 hook global BufCreate .*/TIC-80/fennel/.*\.lua %{
     set-option buffer filetype lisp
