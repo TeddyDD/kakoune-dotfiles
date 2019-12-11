@@ -153,7 +153,7 @@ plug "occivink/kakoune-snippets" config %{
 # My plugins
 
 plug "TeddyDD/kakoune-wiki" %{
-    wiki_setup "/home/teddy/Notatki/wiki"
+    wiki-setup "$HOME/Notatki/wiki"
     map global user w :wiki<space> -docstring 'wiki'
 
     define-command diary %{
@@ -184,3 +184,7 @@ plug "TeddyDD/kakoune-pixilang" %{
 plug "robertmeta/nofrils-kakoune" theme
 plug "ath3/explain-shell.kak"
 plug "chambln/kakoune-smart-quotes"
+
+plug 'jjk96/kakoune-rainbow' %{
+	set-option global rainbow_faces red green yellow blue magenta cyan
+}
