@@ -178,6 +178,6 @@ cheat.sh lookup" \
     set-option global cheat_filetype %opt{filetype}
     try %{ delete-buffer! *cheat* }
     edit -scratch *cheat*
-    execute-keys "!curl cheat.sh/%opt{cheat_filetype}/%sh{echo $@ | tr ' ' '+'}<ret>"
+    execute-keys "!curl -S cheat.sh/%opt{cheat_filetype}/%sh{echo $@ | tr ' ' '+'}<ret>"
     ansi-render
 }
