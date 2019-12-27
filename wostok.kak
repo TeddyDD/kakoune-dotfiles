@@ -1,4 +1,7 @@
-colorscheme 'selenized-light'
+colorscheme 'selenized-black'
 
 evaluate-commands %sh{kak-lsp --kakoune -s kaklspglobal}
-lsp-enable
+hook global WinSetOption filetype=(python|go) %{
+    lsp-enable-window
+}
+set-option global ui_options "ncurses_assistant=none"
