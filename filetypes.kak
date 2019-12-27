@@ -31,12 +31,19 @@ hook global WinSetOption filetype=python %{
 hook global WinSetOption filetype=go %{
     #set buffer lintcmd '(gometalinter | grep -v "::\w") <'
     set buffer lintcmd 'revive'
-    set buffer formatcmd 'goreturns'
+    set buffer formatcmd 'goimports'
     unmap buffer normal "'"
     map buffer normal "'" :enter-user-mode<space>gomode<ret>
     hook buffer BufWritePre .* %{
         lsp-formatting
+		ctags-update-tags
     }
+    set-face window Reference blue+u
+    hook window NormalIdle .* %{
+		lsp-highlight-references
+    }
+    lsp-auto-hover-enable
+    lsp-auto-signature-help-enable
 }
 
 # go get -u arp242.net/goimport
