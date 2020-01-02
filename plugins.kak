@@ -56,6 +56,7 @@ plug "alexherbo2/split-object.kak" %{
     map global normal <a-I> ': enter-user-mode split-object<ret>'
     map global user I ': enter-user-mode split-object<ret>' -docstring 'Split objetcs'
 }
+plug "alexherbo2/explore.kak"
 
 plug "h-youhei/kakoune-each-line-selection"
 plug "h-youhei/kakoune-surround" %{
@@ -166,11 +167,6 @@ plug "TeddyDD/kakoune-cfdg"
 plug "TeddyDD/kakoune-mint"
 plug "TeddyDD/kakoune-selenized" theme
 
-plug "TeddyDD/kakoune-edit-or-dir" %{
-    unalias global e
-    alias global e edit-or-dir
-}
-
 plug "TeddyDD/yank-ring.kak" %{
     map global user y :yank-ring-open<ret> -docstring 'yank ring'
 }
@@ -185,4 +181,15 @@ plug "chambln/kakoune-smart-quotes"
 
 plug 'jjk96/kakoune-rainbow' %{
 	set-option global rainbow_faces red green yellow blue magenta cyan
+}
+
+plug "andreyorst/kaktree" config %{
+    map global user 't' ": kaktree-toggle<ret>" -docstring "toggle filetree panel"
+    hook global WinSetOption filetype=kaktree %{
+        remove-highlighter buffer/numbers
+        remove-highlighter buffer/matching
+        remove-highlighter buffer/wrap
+        remove-highlighter buffer/show-whitespaces
+    }
+    kaktree-enable
 }
