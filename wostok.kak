@@ -1,4 +1,4 @@
-colorscheme 'selenized-black'
+colorscheme 'selenized-white'
 
 evaluate-commands %sh{kak-lsp --kakoune -s kaklspglobal}
 hook global WinSetOption filetype=(python|go) %{
