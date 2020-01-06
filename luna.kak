@@ -1,5 +1,5 @@
 #colorscheme gotham
-colorscheme selenized-light
+colorscheme selenized-white
 # set-option global termcmd "st -e sh -c"
 
 ###########################
