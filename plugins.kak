@@ -49,9 +49,7 @@ plug "danr/kakoune-easymotion" commit 40d73d  %{
 }
 
 plug "alexherbo2/auto-pairs.kak" 
-plug "alexherbo2/distraction-free.kak"
 plug "alexherbo2/connect.kak"
-plug "alexherbo2/select.kak"
 plug "alexherbo2/split-object.kak" %{
     map global normal <a-I> ': enter-user-mode split-object<ret>'
     map global user I ': enter-user-mode split-object<ret>' -docstring 'Split objetcs'
@@ -167,6 +165,8 @@ plug "TeddyDD/kakoune-cfdg"
 plug "TeddyDD/kakoune-mint"
 plug "TeddyDD/kakoune-selenized" theme
 
+plug "TeddyDD/distraction-free.kak"
+plug "TeddyDD/select.kak"
 plug "TeddyDD/yank-ring.kak" %{
     map global user y :yank-ring-open<ret> -docstring 'yank ring'
 }
