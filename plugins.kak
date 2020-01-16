@@ -54,7 +54,6 @@ plug "alexherbo2/split-object.kak" %{
     map global normal <a-I> ': enter-user-mode split-object<ret>'
     map global user I ': enter-user-mode split-object<ret>' -docstring 'Split objetcs'
 }
-plug "alexherbo2/explore.kak"
 
 plug "h-youhei/kakoune-each-line-selection"
 plug "h-youhei/kakoune-surround" %{
@@ -166,6 +165,7 @@ plug "TeddyDD/kakoune-mint"
 plug "TeddyDD/kakoune-selenized" theme
 
 plug "TeddyDD/distraction-free.kak"
+plug "TeddyDD/explore.kak"
 plug "TeddyDD/select.kak"
 plug "TeddyDD/yank-ring.kak" %{
     map global user y :yank-ring-open<ret> -docstring 'yank ring'
