@@ -35,14 +35,6 @@ source "%val{config}/mappings.kak"
 # host specific settings
 try %{ source %sh{ echo "$kak_config/$(hostname).kak" } }
 
-define-command -override -docstring "flygrep: run grep on every key" \
-flygrep %{
-    edit -scratch *grep*
-    prompt "flygrep: " -on-change %{
-        flygrep-call-grep %val{text}
-    } nop
-}
-
 define-command -override flygrep-call-grep -params 1 %{ evaluate-commands %sh{
     length=${#1}
     [ -z "${1##*&*}" ] && text=$(printf "%s\n" "$1" | sed "s/&/&&/g") || text="$1"
