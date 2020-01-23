@@ -10,6 +10,7 @@ set-option global tabstop 4
 set-option -add global matching_pairs „
 set-option -add global matching_pairs ”
 
+set-option global disabled_hooks '.*-trim-indent'
 
 # Editorconfig
 
