@@ -2,6 +2,7 @@
 # Global settings and hooks #
 #############################
 
+set-option global startup_info_version 20200116
 set-option global grepcmd "rg -niL --column"
 set-option global scrolloff '2,3'
 set-option global tabstop 4
