@@ -1,11 +1,11 @@
-#                                                   
-#  mmmmmmm            #      #         mmmm   mmmm  
+#
+#  mmmmmmm            #      #         mmmm   mmmm
 #     #     mmm    mmm#   mmm#  m   m  #   "m #   "m
 #     #    #"  #  #" "#  #" "#  "m m"  #    # #    #
 #     #    #""""  #   #  #   #   #m#   #    # #    #
-#     #    "#mm"  "#m##  "#m##   "#    #mmm"  #mmm" 
-#                                m"                 
-#                               ""                  
+#     #    "#mm"  "#m##  "#m##   "#    #mmm"  #mmm"
+#                                m"
+#                               ""
 #   Kakoune config
 
 # load global settings
