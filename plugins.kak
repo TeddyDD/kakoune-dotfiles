@@ -48,11 +48,16 @@ plug "danr/kakoune-easymotion" commit 40d73d  %{
     map global user j ' :enter-user-mode easymotion<ret>' -docstring 'easy motion'
 }
 
-plug "alexherbo2/auto-pairs.kak" 
+plug "alexherbo2/auto-pairs.kak"
 plug "alexherbo2/connect.kak"
 plug "alexherbo2/split-object.kak" %{
     map global normal <a-I> ': enter-user-mode split-object<ret>'
     map global user I ': enter-user-mode split-object<ret>' -docstring 'Split objetcs'
+}
+plug "alexherbo2/surround.kak" %{
+    map global user r ': surround<ret>' -docstring 'Enter surround mode'
+    set-option global surround_begin auto-pairs-disable
+    set-option global surround_end auto-pairs-enable
 }
 
 plug "h-youhei/kakoune-each-line-selection"
@@ -193,3 +198,4 @@ plug "andreyorst/kaktree" config %{
     }
     kaktree-enable
 }
+plug "https://gitlab.com/listentolist/kakoune-table"
