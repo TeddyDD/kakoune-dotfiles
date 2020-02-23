@@ -149,7 +149,7 @@ plug "occivink/kakoune-snippets" config %{
 # My plugins
 
 plug "TeddyDD/kakoune-wiki" %{
-    wiki-setup "$HOME/Notatki/wiki"
+    wiki-setup %sh{ echo  "$HOME/Notatki/wiki" }
     map global user w :wiki<space> -docstring 'wiki'
 
     define-command diary %{
