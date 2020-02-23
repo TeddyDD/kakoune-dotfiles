@@ -44,7 +44,7 @@ plug "occivink/kakoune-phantom-selection" %{
 plug "occivink/kakoune-sudo-write"
 plug "occivink/kakoune-vertical-selection"
 
-plug "danr/kakoune-easymotion" commit 40d73d  %{
+plug "danr/kakoune-easymotion" %{
     map global user j ' :enter-user-mode easymotion<ret>' -docstring 'easy motion'
 }
 
