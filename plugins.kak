@@ -194,3 +194,4 @@ plug "andreyorst/kaktree" config %{
     kaktree-enable
 }
 plug "https://gitlab.com/listentolist/kakoune-table"
+plug "matthias-margush/tug"
