@@ -32,14 +32,7 @@ plug "occivink/kakoune-expand" %{
 }
 plug "occivink/kakoune-sort-selections"
 
-plug "occivink/kakoune-phantom-selection" %{
-    map global insert '<c-a>' '<esc>:phantom-selection-iterate-next<ret>'
-    map global insert '<c-w>' '<esc>:phantom-selection-select-all<ret>'
-    map global normal '<c-a>' ':phantom-selection-iterate-next<ret>'
-    map global normal '<c-q>' ':phantom-selection-clear'
-    map global normal '<c-q>' '<esc>:phantom-selection-clear<ret>'
-    map global normal '<c-w>' ':phantom-selection-select-all<ret>'
-}
+plug "occivink/kakoune-phantom-selection"
 
 plug "occivink/kakoune-sudo-write"
 plug "occivink/kakoune-vertical-selection"
