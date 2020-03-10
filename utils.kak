@@ -181,3 +181,7 @@ cheat.sh lookup" \
     execute-keys "!curl -S cheat.sh/%opt{cheat_filetype}/%sh{echo $@ | tr ' ' '+'}<ret>"
     ansi-render
 }
+
+define-command mdfence -docstring 'wrap selection in fenced code block' %{
+    execute-keys 'Zo```<esc>zO```<esc>z'
+}
