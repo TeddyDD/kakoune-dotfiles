@@ -42,6 +42,7 @@ plug "danr/kakoune-easymotion" %{
 }
 
 plug "alexherbo2/auto-pairs.kak"
+plug "alexherbo2/prelude.kak"
 plug "alexherbo2/connect.kak"
 plug "alexherbo2/split-object.kak" %{
     map global normal <a-I> ': enter-user-mode split-object<ret>'
