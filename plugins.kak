@@ -8,7 +8,6 @@ plug "Delapouite/kakoune-text-objects"
 plug "Delapouite/kakoune-auto-percent"
 plug "Delapouite/kakoune-buffers" %{
     map global user b ':enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)…'
-    map global buffers r ':rofi-buffers<ret>' -docstring 'rofi buffer list'
     map global buffers b ':fzf-buffer<ret>' -docstring 'Fzf buffer list'
 }
 
@@ -19,10 +18,10 @@ plug 'delapouite/kakoune-hump' %{
   map global normal 'Œ' ': extend-next-hump<ret>'     -docstring 'extend next hump'
 }
 
-
 plug "Delapouite/kakoune-mirror" %{
 	map global user m ' :enter-user-mode -lock mirror<ret>' -docstring 'mirror mode'
 }
+
 plug "Delapouite/kakoune-palette"
 plug "Delapouite/kakoune-select-view"
 
@@ -36,10 +35,6 @@ plug "occivink/kakoune-phantom-selection"
 
 plug "occivink/kakoune-sudo-write"
 plug "occivink/kakoune-vertical-selection"
-
-plug "danr/kakoune-easymotion" %{
-    map global user j ' :enter-user-mode easymotion<ret>' -docstring 'easy motion'
-}
 
 plug "alexherbo2/auto-pairs.kak"
 plug "alexherbo2/prelude.kak"
@@ -65,8 +60,6 @@ plug "https://gitlab.com/fsub/kakoune-mark" %{
 }
 
 plug "https://gitlab.com/notramo/crystal.kak"
-
-# plug "Skytrias/gdscript-kak"
 
 plug "andreyorst/smarttab.kak"
 plug "andreyorst/kakoune-snippet-collection"
@@ -171,7 +164,6 @@ plug "TeddyDD/kakoune-pixilang" %{
 }
 
 plug "robertmeta/nofrils-kakoune" theme
-plug "ath3/explain-shell.kak"
 plug "chambln/kakoune-smart-quotes"
 
 plug 'jjk96/kakoune-rainbow' %{
