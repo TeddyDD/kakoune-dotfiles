@@ -2,6 +2,7 @@
 # PLUGINS #
 ###########
 
+plug "gustavo-hms/luar"
 plug "andreyorst/plug.kak" noload
 
 plug "Delapouite/kakoune-text-objects"
@@ -18,8 +19,8 @@ plug 'delapouite/kakoune-hump' %{
   map global normal 'Œ' ': extend-next-hump<ret>'     -docstring 'extend next hump'
 }
 
-plug "Delapouite/kakoune-mirror" %{
-	map global user m ' :enter-user-mode -lock mirror<ret>' -docstring 'mirror mode'
+plug "Delapouite/kakoune-mirror" config %{
+	map global user m ': enter-user-mode -lock mirror<ret>' -docstring 'mirror mode'
 }
 
 plug "Delapouite/kakoune-palette"
@@ -182,3 +183,4 @@ plug "andreyorst/kaktree" config %{
 }
 plug "https://gitlab.com/listentolist/kakoune-table"
 plug "matthias-margush/tug"
+plug "https://gitlab.com/Screwtapello/kakoune-ghwiki"
