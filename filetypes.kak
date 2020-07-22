@@ -124,7 +124,12 @@ hook -group git-commit-highlight global WinSetOption filetype=git-(commit|rebase
 
 # Shell
 hook global WinSetOption filetype=sh %{
-    set-option buffer lintcmd "shellcheck -f gcc"
+    set-option window lintcmd "shellcheck -f gcc"
+    lint-enable
+    hook window BufWritePost .* %{
+		lint
+    }
+    set-option window formatcmd "shfmt -s -knl"
 }
 
 hook global BufOpenFile '.*/colors/.*[.]kak' %{
