@@ -187,3 +187,8 @@ plug "andreyorst/kaktree" config %{
 plug "https://gitlab.com/listentolist/kakoune-table"
 plug "matthias-margush/tug"
 plug "https://gitlab.com/Screwtapello/kakoune-ghwiki"
+
+plug "ftonneau/digraphs.kak" %{
+    set-option global digraphs_path 'plugins/digraphs.kak'
+    digraphs-enable-on <a-d> <a-D>
+}
