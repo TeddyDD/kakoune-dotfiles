@@ -46,6 +46,10 @@ hook global WinSetOption filetype=go %{
     lsp-auto-signature-help-enable
 }
 
+define-command go-hide-ierr %{
+    add-highlighter window/ regex 'if err != nil .*?\{.*?\}' 0:comment
+}
+
 # go get -u arp242.net/goimport
 # go get -u github.com/uudashr/gopkgs/cmd/gopkgs
 # FIXME
@@ -82,6 +86,7 @@ map global gomode j :go-jump<ret> -docstring 'jump to definition'
 map global gomode d :go-doc-info<ret> -docstring 'documentation'
 map global gomode f :format<ret> -docstring 'format'
 map global gomode h :lsp-hover<ret> -docstring 'hover'
+map global gomode o %{: grep HACK|TODO|FIXME|XXX|NOTE|^func|^var|^package|^const|^goto|^struct|^type %val{bufname} -H<ret>} -docstring "Show outline"
 
 # Justfile
 hook global BufCreate .*Justfile %{
