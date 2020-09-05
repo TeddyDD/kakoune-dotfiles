@@ -42,7 +42,13 @@ plug "alexherbo2/auto-pairs.kak"
 plug "alexherbo2/terminal-mode.kak" %{
     map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
 }
-plug "alexherbo2/connect.kak"
+plug "alexherbo2/connect.kak" subset %{
+	connect.kak
+	fifo.kak
+} config %{
+	require-module connect-fifo
+}
+
 plug "alexherbo2/split-object.kak" %{
     map global normal <a-I> ': enter-user-mode split-object<ret>'
     map global user I ': enter-user-mode split-object<ret>' -docstring 'Split objetcs'
