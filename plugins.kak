@@ -46,7 +46,7 @@ plug "alexherbo2/connect.kak" subset %{
 	connect.kak
 	fifo.kak
 } config %{
-	require-module connect-fifo
+	require-module connect
 }
 
 plug "alexherbo2/split-object.kak" %{
