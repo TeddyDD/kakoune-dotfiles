@@ -89,12 +89,7 @@ plug "andreyorst/tagbar.kak" defer "tagbar" %{
 }
 
 plug "laelath/kakoune-show-matching-insert" %{
-    hook global InsertBegin .* %{
-        add-highlighter window/matching_prev_char ranges show_matching_insert
-    }
-    hook global InsertEnd .* %{
-        remove-highlighter window/matching_prev_char
-    }
+    add-highlighter global/ ranges show_matching_insert
 }
 
 plug "eraserhd/kak-ansi"
