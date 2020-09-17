@@ -5,6 +5,10 @@
 plug "gustavo-hms/luar"
 plug "andreyorst/plug.kak" noload
 
+plug "https://gitlab.com/listentolist/kakoune-fandt" %{
+	require-module fandt
+}
+
 plug "Delapouite/kakoune-text-objects"
 plug "Delapouite/kakoune-auto-percent"
 plug "Delapouite/kakoune-buffers" %{
