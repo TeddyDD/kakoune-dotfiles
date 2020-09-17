@@ -2,6 +2,10 @@
 # UTILITY COMMANDS #
 ####################
 
+define-command debug-hooks %{
+    hook -group 'debug-hooks' global ModeChange .* %{ echo -debug %val{hook_param} }
+}
+
 # Toggle highlighter
 define-command toggle-highlighter -params .. -docstring 'toggle-highlighter <argument>…: toggle an highlighter' %{
     try %{
