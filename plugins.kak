@@ -38,7 +38,12 @@ plug "occivink/kakoune-sudo-write"
 plug "occivink/kakoune-vertical-selection"
 
 plug "alexherbo2/prelude.kak"
-plug "alexherbo2/auto-pairs.kak"
+plug "alexherbo2/auto-pairs.kak" %{
+    require-module auto-pairs
+    auto-pairs-enable
+    hook global ModeChange 'push:.*:next-key\[user\.mirror\]' %{ auto-pairs-disable }
+    hook global ModeChange 'pop:next-key\[user\.mirror\]:.*'  %{ auto-pairs-enable }
+}
 plug "alexherbo2/terminal-mode.kak" %{
     map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
 }
