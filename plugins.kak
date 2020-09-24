@@ -49,6 +49,7 @@ plug "alexherbo2/auto-pairs.kak" %{
     hook global ModeChange 'pop:next-key\[user\.mirror\]:.*'  %{ auto-pairs-enable }
 }
 plug "alexherbo2/terminal-mode.kak" %{
+    require-module terminal-mode
     map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
 }
 plug "alexherbo2/connect.kak" subset %{
@@ -59,6 +60,7 @@ plug "alexherbo2/connect.kak" subset %{
 }
 
 plug "alexherbo2/split-object.kak" %{
+    require-module split-object
     map global normal <a-I> ': enter-user-mode split-object<ret>'
     map global user I ': enter-user-mode split-object<ret>' -docstring 'Split objetcs'
 }
