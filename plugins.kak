@@ -5,6 +5,10 @@
 plug "gustavo-hms/luar"
 plug "andreyorst/plug.kak" noload
 
+plug "https://gitlab.com/listentolist/kakoune-fandt" %{
+	require-module fandt
+}
+
 plug "Delapouite/kakoune-text-objects"
 plug "Delapouite/kakoune-auto-percent"
 plug "Delapouite/kakoune-buffers" %{
@@ -38,18 +42,25 @@ plug "occivink/kakoune-sudo-write"
 plug "occivink/kakoune-vertical-selection"
 
 plug "alexherbo2/prelude.kak"
-plug "alexherbo2/auto-pairs.kak"
+plug "alexherbo2/auto-pairs.kak" %{
+    require-module auto-pairs
+    auto-pairs-enable
+    hook global ModeChange 'push:.*:next-key\[user\.mirror\]' %{ auto-pairs-disable }
+    hook global ModeChange 'pop:next-key\[user\.mirror\]:.*'  %{ auto-pairs-enable }
+}
 plug "alexherbo2/terminal-mode.kak" %{
+    require-module terminal-mode
     map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
 }
 plug "alexherbo2/connect.kak" subset %{
 	connect.kak
 	fifo.kak
 } config %{
-	require-module connect-fifo
+	require-module connect
 }
 
 plug "alexherbo2/split-object.kak" %{
+    require-module split-object
     map global normal <a-I> ': enter-user-mode split-object<ret>'
     map global user I ': enter-user-mode split-object<ret>' -docstring 'Split objetcs'
 }
@@ -89,12 +100,7 @@ plug "andreyorst/tagbar.kak" defer "tagbar" %{
 }
 
 plug "laelath/kakoune-show-matching-insert" %{
-    hook global InsertBegin .* %{
-        add-highlighter window/matching_prev_char ranges show_matching_insert
-    }
-    hook global InsertEnd .* %{
-        remove-highlighter window/matching_prev_char
-    }
+    add-highlighter global/ ranges show_matching_insert
 }
 
 plug "eraserhd/kak-ansi"
