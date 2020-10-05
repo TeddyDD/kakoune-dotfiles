@@ -130,10 +130,8 @@ hook -group git-commit-highlight global WinSetOption filetype=git-(commit|rebase
 # Shell
 hook global WinSetOption filetype=sh %{
     set-option window lintcmd "shellcheck -f gcc"
-    lint-enable
-    hook window BufWritePost .* %{
-		lint
-    }
+    lint
+    lint-on-write
     set-option window formatcmd "shfmt -s -knl"
 }
 

@@ -14,7 +14,7 @@ define-command toggle-highlighter -params .. -docstring 'toggle-highlighter <arg
 }
 
 define-command lint-on-write -docstring 'Activate linting on buffer write' %{
-    lint-enable
+    lint
     hook buffer -group lint BufWritePost .* %{ lint }
 }
 
