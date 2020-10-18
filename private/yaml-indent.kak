@@ -1,5 +1,6 @@
 
 define-command yaml-indent %{
+    require-module luar
     require-module yaml-indent
     try %{
         add-highlighter window/yaml_indent ranges yaml_indent_regions
