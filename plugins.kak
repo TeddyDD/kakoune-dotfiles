@@ -5,6 +5,8 @@
 plug "gustavo-hms/luar"
 plug "andreyorst/plug.kak" noload
 
+plug "kakoune-editor/kakoune-extra-filetypes"
+
 plug "https://gitlab.com/listentolist/kakoune-fandt" %{
 	require-module fandt
 }
