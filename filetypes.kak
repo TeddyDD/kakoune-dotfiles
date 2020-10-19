@@ -50,38 +50,7 @@ define-command go-hide-ierr %{
     add-highlighter window/ regex 'if err != nil .*?\{.*?\}' 0:comment
 }
 
-# go get -u arp242.net/goimport
-# go get -u github.com/uudashr/gopkgs/cmd/gopkgs
-# FIXME
-define-command -params 1 \
--shell-script-candidates %{ gopkgs } \
-go-import %{ evaluate-commands -draft -no-hooks %{
-    evaluate-commands %sh{
-    path_file_tmp=$(mktemp "${TMPDIR:-/tmp}"/kak-go-import-XXXXXX)
-    goimportcmd="goimport -add ${1}"
-    printf %s\\n "
-        write -sync \"${path_file_tmp}\"
-
-        evaluate-commands %sh{
-            readonly path_file_out=\$(mktemp \"${TMPDIR:-/tmp}\"/kak-formatter-XXXXXX)
-
-            if cat \"${path_file_tmp}\" | eval \"${goimportcmd}\" > \"\${path_file_out}\"; then
-                printf '%s\\n' \"execute-keys \\%|cat<space>'\${path_file_out}'<ret>\"
-                printf '%s\\n' \"nop %sh{ rm -f '\${path_file_out}' }\"
-            else
-                printf '%s\\n' \"
-                    evaluate-commands -client '${kak_client}' echo -markup '{Error}goimport returned an error (\$?)'
-                \"
-                rm -f \"\${path_file_out}\"
-            fi
-
-            rm -f \"${path_file_tmp}\"
-        }
-    "
-}}}
-
 declare-user-mode gomode
-map global gomode i :go-import<space> -docstring 'import'
 map global gomode j :go-jump<ret> -docstring 'jump to definition'
 map global gomode d :go-doc-info<ret> -docstring 'documentation'
 map global gomode f :format<ret> -docstring 'format'
@@ -108,10 +77,10 @@ hook global WinSetOption filetype=crystal %{
 
 # CFDG
 hook global WinSetOption filetype=cfdg %{
-    hook buffer BufWritePost .* %{
+    hook window BufWritePost .* %{
         cfdg-render
     }
-    map buffer normal "'" :enter-user-mode<space>cfdgmode<ret>
+    map window normal "'" :enter-user-mode<space>cfdgmode<ret>
 }
 
 declare-user-mode cfdgmode
@@ -122,14 +91,10 @@ hook global WinSetOption filetype=json %{
     set buffer formatcmd 'jq .'
 }
 
-# Git commit
-hook -group git-commit-highlight global WinSetOption filetype=git-(commit|rebase) %{
-    add-highlighter window/git-commit-highlight regex "^\h*[^#\s][^\n]{71}([^\n]+)" 1:yellow
-}
 
 # Shell
 hook global WinSetOption filetype=sh %{
-    set-option window lintcmd "shellcheck -f gcc"
+    set-option window lintcmd "shellcheck -x -f gcc"
     lint
     lint-on-write
     set-option window formatcmd "shfmt -s -knl"
