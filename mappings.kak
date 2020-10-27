@@ -14,6 +14,7 @@ map global spell c ': spell-clear<ret>' -docstring 'clear'
 map global normal '#' ': comment-line<ret>' -docstring 'comment line'
 map global normal D <a-x>d -docstring 'delete line'
 
+map global user 'r' ': surround<ret>'
 map global user '#' ': comment-block<ret>' -docstring 'Comment block'
 map global user </> /(?i) -docstring 'search case insensitive'
 map global user g ': grep ''''<left>' -docstring 'RipGrep'
