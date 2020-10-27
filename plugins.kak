@@ -44,6 +44,7 @@ plug "occivink/kakoune-sudo-write"
 plug "occivink/kakoune-vertical-selection"
 
 plug "alexherbo2/prelude.kak"
+plug "alexherbo2/search-highlighter.kak" %{ require-module search-highlighter }
 plug "alexherbo2/auto-pairs.kak" %{
     require-module auto-pairs
     auto-pairs-enable
