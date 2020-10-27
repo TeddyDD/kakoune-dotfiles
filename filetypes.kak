@@ -2,12 +2,9 @@
 # FILE TYPE CONFIGS  #
 ######################
 
-# Fennel
-hook global BufCreate .*\.fnl %{
-    set-option buffer filetype lisp
-}
+require-module 'filetypes-sugar'
 
-hook global BufCreate .*\.janet %{
+for-extension "(fnl|janet)" %{
     set-option buffer filetype lisp
 }
 
@@ -18,12 +15,7 @@ hook global BufCreate .*/TIC-80/fennel/.*\.lua %{
     lsp-diagnostic-lines-disable
 }
 
-# Markdown
-hook global WinSetOption filetype=markdown %{
-    set-option window lintcmd "%val{config}/bin/mdlint"
-}
-
-hook global WinSetOption filetype=python %{
+for-filetype "(python|yaml)" %{
     expandtab
 }
 
@@ -54,18 +46,6 @@ map global gomode d :go-doc-info<ret> -docstring 'documentation'
 map global gomode f :format<ret> -docstring 'format'
 map global gomode h :lsp-hover<ret> -docstring 'hover'
 map global gomode o %{: grep HACK|TODO|FIXME|XXX|NOTE|^func|^var|^package|^const|^goto|^struct|^type %val{bufname} -H<ret>} -docstring "Show outline"
-
-# Justfile
-hook global BufCreate .*Justfile %{
-    set buffer tabstop 4
-    set buffer indentwidth 4
-}
-
-# Moonscript
-hook global WinSetOption filetype=moon %{
-    set buffer tabstop 2
-    set buffer indentwidth 2
-}
 
 # Crystal
 hook global WinSetOption filetype=crystal %{
