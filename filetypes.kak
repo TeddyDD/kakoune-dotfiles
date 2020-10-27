@@ -38,10 +38,8 @@ hook global WinSetOption filetype=go %{
         lsp-formatting
 		ctags-update-tags
     }
-    set-face window Reference blue+u
-    hook window NormalIdle .* %{
-		lsp-highlight-references
-    }
+    set-face window Reference default,rgba:368aeb26
+    set-option window lsp_auto_highlight_references true
     lsp-auto-hover-enable
     lsp-auto-signature-help-enable
 }
