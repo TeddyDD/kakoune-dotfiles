@@ -12,17 +12,14 @@ map global spell c ': spell-clear<ret>' -docstring 'clear'
 
 
 map global normal '#' ': comment-line<ret>' -docstring 'comment line'
+map global normal '£' ': comment-block<ret>' -docstring 'comment block'
 map global normal D <a-x>d -docstring 'delete line'
 
-map global user 'r' ': surround<ret>'
-map global user '#' ': comment-block<ret>' -docstring 'Comment block'
+map global user 'r' ': surround<ret>' -docstring 'surround'
+map global user 'R' ': change-surround<ret>' -docstring 'change surround'
 map global user </> /(?i) -docstring 'search case insensitive'
 map global user g ': grep ''''<left>' -docstring 'RipGrep'
 map global user s ': enter-user-mode spell<ret>' -docstring 'Spell mode'
-
-map global user P '!xsel --output --clipboard<ret>' -docstring 'Paste before'
-map global user p '<a-!>xsel --output --clipboard<ret>' -docstring 'Paste after'
-map global user R '|xclip -o<ret>' -docstring "Replace with clipboard"
 
 map global user <a-w> ': toggle-highlighter wrap -word<ret>' -docstring "toggle word wrap"
 map global user <a-W> ': toggle-highlighter show-whitespaces<ret>' -docstring "toggle whitespaces"
