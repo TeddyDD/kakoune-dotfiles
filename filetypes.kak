@@ -22,13 +22,13 @@ for-filetype "(python|yaml)" %{
 # Go
 hook global WinSetOption filetype=go %{
     #set buffer lintcmd '(gometalinter | grep -v "::\w") <'
-    set buffer lintcmd 'revive'
-    set buffer formatcmd 'goimports'
+    # set buffer lintcmd 'revive'
+    # set buffer formatcmd 'goimports'
     unmap buffer normal "'"
     map buffer normal "'" :enter-user-mode<space>gomode<ret>
     hook buffer BufWritePre .* %{
-        lsp-formatting
 		ctags-update-tags
+		lsp-formatting-sync
     }
     set-face window Reference default,rgba:368aeb26
     set-option window lsp_auto_highlight_references true
@@ -40,12 +40,12 @@ define-command go-hide-ierr %{
     add-highlighter window/ regex 'if err != nil .*?\{.*?\}' 0:comment
 }
 
-declare-user-mode gomode
-map global gomode j :go-jump<ret> -docstring 'jump to definition'
-map global gomode d :go-doc-info<ret> -docstring 'documentation'
-map global gomode f :format<ret> -docstring 'format'
-map global gomode h :lsp-hover<ret> -docstring 'hover'
-map global gomode o %{: grep HACK|TODO|FIXME|XXX|NOTE|^func|^var|^package|^const|^goto|^struct|^type %val{bufname} -H<ret>} -docstring "Show outline"
+# declare-user-mode gomode
+# map global gomode j :go-jump<ret> -docstring 'jump to definition'
+# map global gomode d :go-doc-info<ret> -docstring 'documentation'
+# map global gomode f :format<ret> -docstring 'format'
+# map global gomode h :lsp-hover<ret> -docstring 'hover'
+# map global gomode o %{: grep HACK|TODO|FIXME|XXX|NOTE|^func|^var|^package|^const|^goto|^struct|^type %val{bufname} -H<ret>} -docstring "Show outline"
 
 # Crystal
 hook global WinSetOption filetype=crystal %{
