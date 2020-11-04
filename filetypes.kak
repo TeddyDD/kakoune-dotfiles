@@ -15,7 +15,7 @@ hook global BufCreate .*/TIC-80/fennel/.*\.lua %{
     lsp-diagnostic-lines-disable
 }
 
-for-filetype "(python|yaml)" %{
+for-filetype "(python|yaml|lua|cucumber)" %{
     expandtab
 }
 
@@ -48,13 +48,13 @@ define-command go-hide-ierr %{
 # map global gomode o %{: grep HACK|TODO|FIXME|XXX|NOTE|^func|^var|^package|^const|^goto|^struct|^type %val{bufname} -H<ret>} -docstring "Show outline"
 
 # Crystal
-hook global WinSetOption filetype=crystal %{
+for-filetype crystal %{
     set buffer tabstop 2
     set buffer indentwidth 2
 }
 
 # CFDG
-hook global WinSetOption filetype=cfdg %{
+for-filetype cfdg %{
     hook window BufWritePost .* %{
         cfdg-render
     }
@@ -65,21 +65,17 @@ declare-user-mode cfdgmode
 map global cfdgmode r :cfdg-render<ret> -docstring 'render'
 
 # JSON
-hook global WinSetOption filetype=json %{
+for-filetype json %{
     set buffer formatcmd 'jq .'
 }
 
 
 # Shell
-hook global WinSetOption filetype=sh %{
+for-filetype sh %{
     set-option window lintcmd "shellcheck -x -f gcc"
     lint
     lint-on-write
     set-option window formatcmd "shfmt -s -knl"
-}
-
-hook global BufOpenFile '.*/colors/.*[.]kak' %{
-    show-color-hook
 }
 
 hook global BufOpenFile '.*\.env.*' %{
