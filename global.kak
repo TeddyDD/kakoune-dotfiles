@@ -53,6 +53,8 @@ define-command sync-clip %{
         xclip -o -r -selection clipboard > /tmp/kak-clip
         echo 'set-register dquote "%file{/tmp/kak-clip}"'
     }
+    nop %sh{ rm -rf /tmp/kak-clip }
 }
 
-map global normal Y ' :sync-clip<ret>'
+map global normal Y ': sync-clip<ret>'
+map global normal <a-y> ': nop %sh{echo $kak_selections | xsel -ib}<ret>'
