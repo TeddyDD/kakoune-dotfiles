@@ -1,4 +1,3 @@
-
 define-command yaml-indent %{
     require-module luar
     require-module yaml-indent
@@ -10,6 +9,10 @@ define-command yaml-indent %{
 }
 
 provide-module yaml-indent %$
+
+declare-option -docstring 'list of faces used for highlighting yaml indent levels' \
+str-list yaml_indent_faces \
+    "bright-red" "bright-green" "bright-yellow" "bright-blue" "bright-magenta" "bright-cyan"
 
 declare-option -hidden range-specs yaml_indent_regions
 
@@ -24,17 +27,13 @@ define-command -hidden yaml-indent-compute-ranges %{
     set-option window yaml_indent_regions %val{timestamp}
     evaluate-commands -draft %{
         execute-keys ';%s^\h+<ret>'
-        lua %val{selections_desc} %{
+        lua "%opt{yaml_indent_faces}" %val{selections_desc} %{
             local floor = math.floor
             local pattern = "(%d+).%d+,%d+.(%d+)"
-            local faces = {
-                "bright-red",
-                "bright-green",
-                "bright-yellow",
-                "bright-blue",
-                "bright-magenta",
-                "bright-cyan",
-            }
+            local faces = {}
+            for face in string.gmatch(table.remove(arg,1), "[^%s]+") do
+                table.insert(faces, face)
+            end
             local faces_len = #faces
             for _,sel in ipairs(arg) do
                 local _,_,line,ce = string.find(sel, pattern)
