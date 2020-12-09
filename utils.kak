@@ -135,4 +135,11 @@ define-command mdfence -docstring 'wrap selection in fenced code block' %{
     execute-keys 'Zo```<esc>zO```<esc>z'
 }
 
-
+define-command keep-and -docstring '<a-k> but with &&' -params 1.. %{
+    execute-keys %sh{
+        for regexp in $*
+        do
+            printf '<a-k>%s<ret>' "$regexp"
+        done
+    }
+}
