@@ -1,12 +1,7 @@
-#
-#  mmmmmmm            #      #         mmmm   mmmm
-#     #     mmm    mmm#   mmm#  m   m  #   "m #   "m
-#     #    #"  #  #" "#  #" "#  "m m"  #    # #    #
-#     #    #""""  #   #  #   #   #m#   #    # #    #
-#     #    "#mm"  "#m##  "#m##   "#    #mmm"  #mmm"
-#                                m"
-#                               ""
-#   Kakoune config
+# ▀▛▘    ▌  ▌   ▛▀▖▛▀▖
+#  ▌▞▀▖▞▀▌▞▀▌▌ ▌▌ ▌▌ ▌
+#  ▌▛▀ ▌ ▌▌ ▌▚▄▌▌ ▌▌ ▌
+#  ▘▝▀▘▝▀▘▝▀▘▗▄▘▀▀ ▀▀
 
 # load global settings
 source "%val{config}/global.kak"
