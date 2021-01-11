@@ -21,7 +21,7 @@ map global user </> /(?i) -docstring 'search case insensitive'
 map global user g ':grep ''''<left>' -docstring 'RipGrep'
 map global user s ': enter-user-mode spell<ret>' -docstring 'Spell mode'
 
-map global user <a-w> ': toggle-highlighter wrap -word<ret>' -docstring "toggle word wrap"
+map global user <a-w> ': toggle-highlighter wrap -word -indent<ret>' -docstring "toggle word wrap"
 map global user <a-W> ': toggle-highlighter show-whitespaces<ret>' -docstring "toggle whitespaces"
 map global user W '|fmt --width 80<ret>: echo -markup Information formated selections<ret>' -docstring "Wrap to 80 columns"
 map global user <space> '<esc>:' -docstring 'Command prompt'
