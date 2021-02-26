@@ -28,4 +28,7 @@ source "%val{config}/filetypes.kak"
 source "%val{config}/mappings.kak"
 
 # host specific settings
-try %{ source %sh{ echo "$kak_config/$(hostname).kak" } }
+source "%val{config}/hosts.kak"
+# try %{
+    require-module %sh{ echo "host-$(hostname)" }
+# }
