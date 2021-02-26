@@ -43,26 +43,19 @@ plug "occivink/kakoune-phantom-selection"
 plug "occivink/kakoune-sudo-write"
 plug "occivink/kakoune-vertical-selection"
 
-plug "alexherbo2/prelude.kak"
-plug "alexherbo2/search-highlighter.kak" %{ require-module search-highlighter }
-plug "alexherbo2/auto-pairs.kak" %{
-    require-module auto-pairs
-    auto-pairs-enable
-    hook global ModeChange 'push:.*:next-key\[user\.mirror\]' %{ auto-pairs-disable }
-    hook global ModeChange 'pop:next-key\[user\.mirror\]:.*'  %{ auto-pairs-enable }
-}
-plug "alexherbo2/terminal-mode.kak" %{
-    require-module terminal-mode
-    map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
-}
-plug "alexherbo2/connect.kak" subset %{
+plug "kakounedotcom/prelude.kak"
+plug "kakounedotcom/connect.kak" subset %{
 	connect.kak
 	fifo.kak
 } config %{
 	require-module connect
 }
+plug "TeddyDD/terminal-mode.kak" %{
+    require-module terminal-mode
+    map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
+}
 
-plug "alexherbo2/split-object.kak" %{
+plug "TeddyDD/split-object.kak" %{
     require-module split-object
     map global normal <a-I> ': enter-user-mode split-object<ret>'
     map global user I ': enter-user-mode split-object<ret>' -docstring 'Split objetcs'
@@ -72,18 +65,11 @@ plug "h-youhei/kakoune-each-line-selection"
 plug "h-youhei/kakoune-surround" %{
     map global normal <a-R> ': surround<ret>' -docstring 'surround'
 }
-plug "h-youhei/kakoune-close-tag" %{
-	define-command close-tag-enable %{
-		map global insert '<c-t>' '<esc>:close-tag<ret>i'
-	}
-}
 
 plug "https://gitlab.com/fsub/kakoune-mark" %{
     map global normal <F2> <a-i>w:mark-word<ret>
     map global normal <F3> :mark-clear<ret>
 }
-
-plug "https://gitlab.com/notramo/crystal.kak"
 
 plug "andreyorst/smarttab.kak"
 plug "andreyorst/kakoune-snippet-collection"
