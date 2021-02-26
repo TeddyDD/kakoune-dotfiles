@@ -34,6 +34,7 @@ map global user c ': cd-to-buffer-dir<ret>' -docstring 'cd to buffer directory'
 map global normal <space> , -docstring 'User mode'
 map global normal , <space> -docstring 'Clear selections'
 map global normal <a-,> <a-space> -docstring 'Clear main selection'
+map global normal <%> '<c-s>%' # save position befor %
 
 map global user -docstring "select inner " i <a-i>
 map global user -docstring "select outer"  a <a-a>
