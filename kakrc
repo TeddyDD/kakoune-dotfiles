@@ -29,6 +29,6 @@ source "%val{config}/mappings.kak"
 
 # host specific settings
 source "%val{config}/hosts.kak"
-# try %{
+try %{
     require-module %sh{ echo "host-$(hostname)" }
-# }
+}
