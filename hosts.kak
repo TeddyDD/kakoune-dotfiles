@@ -5,7 +5,7 @@ provide-module host-buran %£
 colorscheme 'selenized-white'
 
 evaluate-commands %sh{kak-lsp --kakoune -s kaklspglobal}
-hook global WinSetOption filetype=(python|go) %{
+hook global WinSetOption filetype=(python|go|sh) %{
     lsp-enable-window
 }
 
