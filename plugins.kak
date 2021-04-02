@@ -44,10 +44,7 @@ plug "occivink/kakoune-sudo-write"
 plug "occivink/kakoune-vertical-selection"
 
 plug "kakounedotcom/prelude.kak"
-plug "kakounedotcom/connect.kak" subset %{
-	connect.kak
-	fifo.kak
-} config %{
+plug "kakounedotcom/connect.kak" config %{
 	require-module connect
 }
 plug "TeddyDD/terminal-mode.kak" %{
@@ -74,12 +71,20 @@ plug "https://gitlab.com/fsub/kakoune-mark" %{
 plug "andreyorst/smarttab.kak"
 plug "andreyorst/kakoune-snippet-collection"
 plug "andreyorst/fzf.kak" config %{
-    map global user f ': fzf-mode<ret>' -docstring 'fzf'
-} defer "fzf" %{
+    require-module fzf
+    require-module fzf-buffer
+    require-module fzf-ctags
+    require-module fzf-git
+    require-module fzf-vcs
+    require-module fzf-grep
+    require-module fzf-sk-grep
+    require-module fzf-project
+    require-module fzf-file
     set-option global fzf_highlight_command 'chroma -f terminal16m -s solarized-light {}'
     set-option global fzf_file_command 'fd -I --type f --follow'
     set-option global fzf_sk_grep_command "rg -niL"
     set-option global fzf_use_main_selection false
+    map global user f ': fzf-mode<ret>' -docstring 'fzf'
 }
 
 plug "andreyorst/tagbar.kak" defer "tagbar" %{
