@@ -1,5 +1,8 @@
 hook global BufCreate "(.+\.(groovy|gvy|gy|gsh))|.+[Jj]enkinsfile.*" %{
 	set-option buffer filetype groovy
+	set-option buffer comment_line '//'
+	set-option buffer comment_block_begin '/*'
+	set-option buffer comment_block_begin '*/'
 }
 
 hook global WinSetOption filetype=groovy %{
