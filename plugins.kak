@@ -2,8 +2,9 @@
 # PLUGINS #
 ###########
 
-plug "gustavo-hms/luar"
 plug "andreyorst/plug.kak" noload
+
+plug "gustavo-hms/luar"
 
 plug "kakoune-editor/kakoune-extra-filetypes"
 
