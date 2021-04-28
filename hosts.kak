@@ -1,5 +1,9 @@
 # Host specific configs
 
+provide-module host-moon %£
+	colorscheme selenized-white
+£
+
 provide-module host-buran %£
 
 colorscheme 'selenized-white'
