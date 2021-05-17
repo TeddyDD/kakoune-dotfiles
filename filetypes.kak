@@ -20,21 +20,35 @@ for-filetype "(python|yaml|lua|cucumber)" %{
 }
 
 # Go
-hook global WinSetOption filetype=go %{
-    #set buffer lintcmd '(gometalinter | grep -v "::\w") <'
-    # set buffer lintcmd 'revive'
-    # set buffer formatcmd 'goimports'
-    unmap buffer normal "'"
-    map buffer normal "'" :enter-user-mode<space>gomode<ret>
-    hook buffer BufWritePre .* %{
+
+for-filetype go %{
+    ctags-generate
+    lsp-auto-hover-enable
+    lsp-auto-signature-help-enable
+	map window user W '| fmt -w 80 -p //'
+    set-face window Reference default,rgba:368aeb26
+    set-option window lsp_auto_highlight_references true
+    set-option window lintcmd 'revive'
+    set-option window formatcmd 'goreturns'
+    hook window BufWritePre .* %{
 		ctags-update-tags
 		lsp-formatting-sync
     }
-    set-face window Reference default,rgba:368aeb26
-    set-option window lsp_auto_highlight_references true
-    lsp-auto-hover-enable
-    lsp-auto-signature-help-enable
 }
+
+# hook global WinSetOption filetype=go %{
+#     #set buffer lintcmd '(gometalinter | grep -v "::\w") <'
+#     # set buffer lintcmd 'revive'
+#     # set buffer formatcmd 'goimports'
+#     unmap buffer normal "'"
+#     map buffer normal "'" :enter-user-mode<space>gomode<ret>
+#     hook buffer BufWritePre .* %{
+# 		ctags-update-tags
+# 		lsp-formatting-sync
+#     }
+#     lsp-auto-hover-enable
+#     lsp-auto-signature-help-enable
+# }
 
 define-command go-hide-ierr %{
     add-highlighter window/ regex 'if err != nil .*?\{.*?\}' 0:comment
