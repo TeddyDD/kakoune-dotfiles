@@ -19,6 +19,10 @@ for-filetype "(python|yaml|lua|cucumber)" %{
     expandtab
 }
 
+for-filetype "fish" %{
+	set-option buffer formatcmd 'fish -c fish_indent'
+}
+
 # Go
 
 for-filetype go %{
