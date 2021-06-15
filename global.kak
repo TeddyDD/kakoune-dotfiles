@@ -42,7 +42,7 @@ hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n> }
 hook global InsertCompletionHide .* %{ unmap window insert <s-tab> <c-p> }
 
 # Kakoune clipboard to system clipboard
-hook global NormalKey y|d|c %{
+hook -group clipboard global NormalKey y|d|c %{
     nop %sh{
         printf %s "$kak_main_reg_dquote" | xsel --input --clipboard
     }
