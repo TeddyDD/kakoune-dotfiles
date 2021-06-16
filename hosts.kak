@@ -2,6 +2,10 @@
 
 provide-module host-moon %£
 	colorscheme selenized-white
+    eval %sh{kak-lsp --kakoune -s kak_lsp_global}
+    hook global WinSetOption filetype=(rust|python|go|javascript|typescript) %{
+        lsp-enable-window
+    }
 £
 
 provide-module host-buran %£
