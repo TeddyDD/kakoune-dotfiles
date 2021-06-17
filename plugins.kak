@@ -199,5 +199,3 @@ plug "ftonneau/digraphs.kak" %{
     set-option global digraphs_path 'plugins/digraphs.kak'
     digraphs-enable-on <a-d> <a-D>
 }
-
-plug "alexherbo2/search.kak"
