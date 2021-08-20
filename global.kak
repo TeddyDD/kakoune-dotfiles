@@ -14,7 +14,10 @@ set-option global disabled_hooks '.*-trim-indent'
 
 # Editorconfig
 
-hook global BufOpenFile .* editorconfig-load
+hook global BufOpenFile .* %{
+    editorconfig-load
+    modeline-parse
+}
 hook global BufNewFile .* editorconfig-load
 
 # This hook is executed when Kakoune starts
