@@ -2,3 +2,5 @@ autoloads/
 plugins/
 colors/
 /.fzf-projects
+
+moon-theme.kak
