@@ -23,23 +23,27 @@ define-command lint-on-write -docstring 'Activate linting on buffer write' %{
 }
 
 define-command clean-up-whitespaces %{
-    execute-keys -draft '%<a-s><a-K>^$<ret>s\h+$<ret>d'
+    try %{
+        execute-keys -draft '%<a-s><a-K>^$<ret>s\h+$<ret>d'
+    } catch %{ echo -markup "{Information} Already OK" }
 }
 
-define-command to-ascii %{
+define-command to-ascii -docstring 'Convert selection to ASCII' %{
   execute-keys '|iconv -f utf8 -t ascii//TRANSLIT<ret>'
 }
 
 define-command -params 1 underline %{
-    evaluate-commands %sh{
-        echo "execute-keys -draft xy<a-h><a-l>PS.<ret>c$1<esc><space>h;"
+    evaluate-commands -draft %{
+		execute-keys "xypx_r%arg{1}"
     }
 }
 alias global u underline
 
 define-command -params 1 frame %{
-    evaluate-commands %sh{
-        echo "execute-keys -draft -itersel xyp<a-h><a-l>r${1}A${1}${1}${1}${1}<esc>xyjp<a-h>i${1}<space><esc><a-l>A<space>${1}<esc>"
+    evaluate-commands -draft %{
+		execute-keys "x_i%arg{1}<space><esc>A<space>%arg{1}<esc>"
+		underline %arg{1}
+		execute-keys jxykP
     }
 }
 
@@ -75,14 +79,15 @@ define-command show-color-hook -docstring 'enable color preview in current buffe
 define-command cd-to-buffer-dir \
 -docstring 'cd to current buffers directory' %{
     evaluate-commands %sh{
-        printf "change-directory '%s'\n" "$(dirname $kak_buffile)"
+        printf "change-directory '%s'\n" "$(dirname "$kak_buffile")"
     }
 }
 
 
 define-command date -docstring 'insert ISO-8601 date at point' %{
-    execute-keys '!date --iso-8601<ret>'
+    execute-keys '!date --iso-8601<ret>i<backspace>'
 }
+
 
 define-command source-dir -params 1 \
 -docstring 'source <DIR>
@@ -100,9 +105,9 @@ define-command for-each-line \
 -params 2 \
 %{
     evaluate-commands %sh{
-        while read f
+        while read -r f
         do
-            printf "$1 $f\n"
+            printf "%s '%s'\n" "$1" "$f"
         done <"$2"
     }
 }
@@ -120,6 +125,10 @@ define-command kakrc -docstring 'edit kakrc' %{
     edit "%val{config}/kakrc"
 }
 
+define-command plugins -docstring 'edit plugins' %{
+    edit "%val{config}/plugins.kak"
+}
+
 declare-option -hidden str cheat_filetype
 define-command -params 1.. cheat -docstring "cheat QUERY
 cheat.sh lookup" \
@@ -127,7 +136,7 @@ cheat.sh lookup" \
     set-option global cheat_filetype %opt{filetype}
     try %{ delete-buffer! *cheat* }
     edit -scratch *cheat*
-    execute-keys "!curl -Ss cheat.sh/%opt{cheat_filetype}/%sh{echo $@ | tr ' ' '+'}<ret>"
+    execute-keys "!curl -Ss cheat.sh/%opt{cheat_filetype}/%sh{echo ""$@"" | tr ' ' '+'}<ret>"
     ansi-render
 }
 
@@ -136,10 +145,12 @@ define-command mdfence -docstring 'wrap selection in fenced code block' %{
 }
 
 define-command keep-and -docstring '<a-k> but with &&' -params 1.. %{
-    execute-keys %sh{
-        for regexp in $*
-        do
-            printf '<a-k>%s<ret>' "$regexp"
-        done
+    try %{
+        execute-keys %sh{
+            for regexp in "$@"
+            do
+                printf '<a-k>%s<ret>' "$regexp"
+            done
+        }
     }
 }
