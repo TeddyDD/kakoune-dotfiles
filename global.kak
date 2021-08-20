@@ -30,8 +30,8 @@ hook global WinCreate .* %{
 }
 
 # Make directory if not exisit
-hook global BufWritePre .* %{ nop %sh{ dir=$(dirname $kak_buffile)
-  [ -d $dir ] || mkdir --parents $dir
+hook global BufWritePre .* %{ nop %sh{ dir=$(dirname "$kak_buffile")
+  [ -d "$dir" ] || mkdir --parents "$dir"
 }}
 
 # jj to exit inset mode
@@ -62,5 +62,5 @@ define-command sync-clip %{
     nop %sh{ rm -rf /tmp/kak-clip }
 }
 
-map global normal Y ': sync-clip<ret>'
-map global normal <a-y> ': nop %sh{echo $kak_selections | xsel -ib}<ret>'
+map global normal Y ': sync-clip<ret>' -docstring 'sync x clipboard to Kakoune clipboard'
+map global normal <a-y> ': nop %sh{echo $kak_selections | xsel -ib}<ret>' -docstring 'sync all selections to clipboard'
