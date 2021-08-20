@@ -105,6 +105,7 @@ plug "eraserhd/parinfer-rust" do %{
     cargo install --force
 } %{
     hook -group parinfer global WinSetOption filetype=lisp %{
+        parinfer-enable-window
         parinfer -if-enabled -paren
         hook -group parinfer window NormalKey .* %{ parinfer -if-enabled -smart }
         hook -group parinfer window InsertChar .* %{ parinfer -if-enabled -smart }
@@ -158,7 +159,6 @@ plug "TeddyDD/kakoune-wiki" %{
     }
 }
 
-plug "TeddyDD/kakoune-lf"
 plug "TeddyDD/kakoune-cfdg"
 plug "TeddyDD/kakoune-mint"
 plug "TeddyDD/kakoune-selenized" theme
@@ -166,15 +166,7 @@ plug "TeddyDD/kakoune-selenized" theme
 plug "TeddyDD/distraction-free.kak"
 plug "TeddyDD/explore.kak"
 plug "TeddyDD/select.kak"
-plug "TeddyDD/yank-ring.kak" %{
-    map global user y :yank-ring-open<ret> -docstring 'yank ring'
-}
 
-plug "TeddyDD/kakoune-pixilang" %{
-	set-option global pixilang_path "~/Pobrane/pixilang/pixilang/linux_x86_64/pixilang"
-}
-
-plug "robertmeta/nofrils-kakoune" theme
 plug "chambln/kakoune-smart-quotes"
 
 plug 'jjk96/kakoune-rainbow' %{
@@ -193,7 +185,6 @@ plug "andreyorst/kaktree" config %{
 }
 plug "https://gitlab.com/listentolist/kakoune-table"
 plug "matthias-margush/tug"
-plug "https://gitlab.com/Screwtapello/kakoune-ghwiki"
 
 plug "ftonneau/digraphs.kak" %{
     set-option global digraphs_path 'plugins/digraphs.kak'
