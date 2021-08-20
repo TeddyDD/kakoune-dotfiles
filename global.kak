@@ -22,8 +22,11 @@ hook global BufNewFile .* editorconfig-load
 
 # This hook is executed when Kakoune starts
 hook global KakBegin .* %{
-    add-highlighter global/linenumbers number-lines -hlcursor -relative
     add-highlighter global/matching_char show-matching
+}
+
+hook global WinCreate .* %{
+    add-highlighter window/number-lines number-lines -hlcursor -relative
 }
 
 # Make directory if not exisit
