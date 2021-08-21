@@ -164,8 +164,6 @@ plug "TeddyDD/kakoune-mint"
 plug "TeddyDD/kakoune-selenized" theme
 
 plug "TeddyDD/distraction-free.kak"
-plug "TeddyDD/explore.kak"
-plug "TeddyDD/select.kak"
 
 plug "chambln/kakoune-smart-quotes"
 
