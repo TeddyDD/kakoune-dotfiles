@@ -54,9 +54,8 @@ plug "TeddyDD/terminal-mode.kak" %{
 }
 
 plug "TeddyDD/split-object.kak" %{
-    require-module split-object
-    map global normal <a-I> ': enter-user-mode split-object<ret>'
-    map global user I ': enter-user-mode split-object<ret>' -docstring 'Split objetcs'
+    map global normal <a-I> ': enter-user-mode select<ret>'
+    map global user I ': enter-user-mode select<ret>' -docstring 'Split objetcs'
 }
 
 plug "h-youhei/kakoune-each-line-selection"
