@@ -2,74 +2,59 @@
 # PLUGINS #
 ###########
 
-plug "andreyorst/plug.kak" noload
-
-plug "gustavo-hms/luar"
-
-plug "kakoune-editor/kakoune-extra-filetypes"
-
+plug-chain "andreyorst/plug.kak" noload \
+plug "gustavo-hms/luar" \
+plug "kakoune-editor/kakoune-extra-filetypes" \
 plug "https://gitlab.com/listentolist/kakoune-fandt" %{
 	require-module fandt
-}
-
-plug "Delapouite/kakoune-text-objects"
-plug "Delapouite/kakoune-auto-percent"
+} \
+plug "Delapouite/kakoune-text-objects" \
+plug "Delapouite/kakoune-auto-percent" \
 plug "Delapouite/kakoune-buffers" %{
     map global user b ':enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)…'
     map global buffers b ':fzf-buffer<ret>' -docstring 'Fzf buffer list'
-}
-
+} \
 plug 'delapouite/kakoune-hump' %{
   map global normal '”' ': select-previous-hump<ret>' -docstring 'select prev hump'
   map global normal 'œ' ': select-next-hump<ret>'     -docstring 'select next hump'
   map global normal '“' ': extend-previous-hump<ret>' -docstring 'extend prev hump'
   map global normal 'Œ' ': extend-next-hump<ret>'     -docstring 'extend next hump'
-}
-
+} \
 plug "Delapouite/kakoune-mirror" config %{
 	map global user m ': enter-user-mode -lock mirror<ret>' -docstring 'mirror mode'
-}
-
-plug "Delapouite/kakoune-palette"
-plug "Delapouite/kakoune-select-view"
-
-plug "occivink/kakoune-find"
+} \
+plug "Delapouite/kakoune-palette" \
+plug "Delapouite/kakoune-select-view" \
+plug "occivink/kakoune-find" \
 plug "occivink/kakoune-expand" %{
     map global normal '+' ': expand<ret>' -docstring 'Expand Selection'
-}
-plug "occivink/kakoune-sort-selections"
-
-plug "occivink/kakoune-phantom-selection"
-
-plug "occivink/kakoune-sudo-write"
-plug "occivink/kakoune-vertical-selection"
-
-plug "kakounedotcom/prelude.kak"
+} \
+plug "occivink/kakoune-sort-selections" \
+plug "occivink/kakoune-phantom-selection" \
+plug "occivink/kakoune-sudo-write" \
+plug "occivink/kakoune-vertical-selection" \
+plug "kakounedotcom/prelude.kak" \
 plug "kakounedotcom/connect.kak" config %{
 	require-module connect
-}
+} \
 plug "TeddyDD/terminal-mode.kak" %{
     require-module terminal-mode
     map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
-}
-
+} \
 plug "TeddyDD/split-object.kak" %{
     map global normal <a-I> ': enter-user-mode select<ret>'
     map global user I ': enter-user-mode select<ret>' -docstring 'Split objetcs'
-}
-
-plug "h-youhei/kakoune-each-line-selection"
+} \
+plug "h-youhei/kakoune-each-line-selection" \
 plug "h-youhei/kakoune-surround" %{
     map global normal <a-R> ': surround<ret>' -docstring 'surround'
-}
-
+} \
 plug "https://gitlab.com/fsub/kakoune-mark" %{
     map global normal <F2> <a-i>w:mark-word<ret>
     map global normal <F3> :mark-clear<ret>
-}
-
-plug "andreyorst/smarttab.kak"
-plug "andreyorst/kakoune-snippet-collection"
+} \
+plug "andreyorst/smarttab.kak" \
+plug "andreyorst/kakoune-snippet-collection" \
 plug "andreyorst/fzf.kak" config %{
     require-module fzf
     require-module fzf-buffer
@@ -85,20 +70,16 @@ plug "andreyorst/fzf.kak" config %{
     set-option global fzf_sk_grep_command "rg -niL"
     set-option global fzf_use_main_selection false
     map global user f ': fzf-mode<ret>' -docstring 'fzf'
-}
-
+} \
 plug "andreyorst/tagbar.kak" defer "tagbar" %{
     set-option global tagbar_sort false
     set-option global tagbar_size 40
     set-option global tagbar_display_anon false
-}
-
+} \
 plug "laelath/kakoune-show-matching-insert" %{
     add-highlighter global/ ranges show_matching_insert
-}
-
-plug "eraserhd/kak-ansi"
-
+} \
+plug "eraserhd/kak-ansi" \
 plug "eraserhd/parinfer-rust" do %{
     cargo build --release
     cargo install --force
@@ -110,8 +91,7 @@ plug "eraserhd/parinfer-rust" do %{
         hook -group parinfer window InsertChar .* %{ parinfer -if-enabled -smart }
         hook -group parinfer window InsertDelete .* %{ parinfer -if-enabled -smart }
     }
-}
-
+} \
 plug "occivink/kakoune-snippets" config %{
     set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-snippet-collection/snippets"
     set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-cfdg/snippets"
@@ -143,10 +123,7 @@ plug "occivink/kakoune-snippets" config %{
             nop
         }
     }
-}
-
-# My plugins
-
+} \
 plug "TeddyDD/kakoune-wiki" %{
     wiki-setup %sh{ echo  "$HOME/Notatki/wiki" }
     map global user w :wiki<space> -docstring 'wiki'
@@ -156,20 +133,15 @@ plug "TeddyDD/kakoune-wiki" %{
         execute-keys 'geo<esc>! date "+%Y-%m-%d: %H:%M"<ret>k'
         underline -
     }
-}
-
-plug "TeddyDD/kakoune-cfdg"
-plug "TeddyDD/kakoune-mint"
-plug "TeddyDD/kakoune-selenized" theme
-
-plug "TeddyDD/distraction-free.kak"
-
-plug "chambln/kakoune-smart-quotes"
-
+} \
+plug "TeddyDD/kakoune-cfdg" \
+plug "TeddyDD/kakoune-mint" \
+plug "TeddyDD/kakoune-selenized" theme \
+plug "TeddyDD/distraction-free.kak" \
+plug "chambln/kakoune-smart-quotes" \
 plug 'jjk96/kakoune-rainbow' %{
 	set-option global rainbow_faces red green yellow blue magenta cyan
-}
-
+} \
 plug "andreyorst/kaktree" config %{
     map global user 't' ": kaktree-toggle<ret>" -docstring "toggle filetree panel"
     hook global WinSetOption filetype=kaktree %{
@@ -179,10 +151,9 @@ plug "andreyorst/kaktree" config %{
         remove-highlighter buffer/show-whitespaces
     }
     kaktree-enable
-}
-plug "https://gitlab.com/listentolist/kakoune-table"
-plug "matthias-margush/tug"
-
+} \
+plug "https://gitlab.com/listentolist/kakoune-table" \
+plug "matthias-margush/tug" \
 plug "ftonneau/digraphs.kak" %{
     set-option global digraphs_path 'plugins/digraphs.kak'
     digraphs-enable-on <a-d> <a-D>
