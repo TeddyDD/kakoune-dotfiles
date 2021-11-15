@@ -3,6 +3,10 @@
 #  ▌▛▀ ▌ ▌▌ ▌▚▄▌▌ ▌▌ ▌
 #  ▘▝▀▘▝▀▘▝▀▘▗▄▘▀▀ ▀▀
 
+try %{
+    evaluate-commands %sh{ kks init }
+}
+
 # load global settings
 source "%val{config}/global.kak"
 
