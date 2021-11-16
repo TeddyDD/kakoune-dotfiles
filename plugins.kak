@@ -157,4 +157,7 @@ plug "matthias-margush/tug" \
 plug "ftonneau/digraphs.kak" %{
     set-option global digraphs_path 'plugins/digraphs.kak'
     digraphs-enable-on <a-d> <a-D>
+} \
+plug "gustavo-hms/peneira" defer "peneira" %{
+    set-face global PeneiraFlag default
 }
