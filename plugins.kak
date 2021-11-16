@@ -37,6 +37,9 @@ plug "kakounedotcom/prelude.kak" \
 plug "kakounedotcom/connect.kak" config %{
 	require-module connect
 } \
+plug "TeddyDD/auto-pairs.kak" config %{
+    enable-auto-pairs
+} \
 plug "TeddyDD/terminal-mode.kak" %{
     require-module terminal-mode
     map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
@@ -82,7 +85,7 @@ plug "laelath/kakoune-show-matching-insert" %{
 plug "eraserhd/kak-ansi" \
 plug "eraserhd/parinfer-rust" do %{
     cargo build --release
-    cargo install --force
+    cargo install --path .
 } %{
     hook -group parinfer global WinSetOption filetype=lisp %{
         parinfer-enable-window
@@ -160,4 +163,8 @@ plug "ftonneau/digraphs.kak" %{
 } \
 plug "gustavo-hms/peneira" defer "peneira" %{
     set-face global PeneiraFlag default
+} \
+plug "dmerejkowsky/kak-subvert" do %{
+    cargo build --release
+    cargo install --path .
 }
