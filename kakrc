@@ -5,6 +5,10 @@
 
 try %{
     evaluate-commands %sh{ kks init }
+    define-command kks-term %{
+        kks-connect terminal
+    }
+    alias global '>' kks-term
 }
 
 # load global settings
