@@ -33,10 +33,6 @@ plug "occivink/kakoune-sort-selections" \
 plug "occivink/kakoune-phantom-selection" \
 plug "occivink/kakoune-sudo-write" \
 plug "occivink/kakoune-vertical-selection" \
-plug "kakounedotcom/prelude.kak" \
-plug "kakounedotcom/connect.kak" config %{
-	require-module connect
-} \
 plug "TeddyDD/auto-pairs.kak" config %{
     enable-auto-pairs
 } \
