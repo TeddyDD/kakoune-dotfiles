@@ -2,6 +2,17 @@
 # UTILITY COMMANDS #
 ####################
 
+define-command quit-all-clients %{
+    nop %sh{
+        (
+			for client in $kak_client_list
+			do
+				echo "evaluate-commands -client $client quit" | kak -p "$kak_session"
+			done
+        ) </dev/null >/dev/null 2>&1 &
+    }
+}
+
 define-command debug-hooks %{
     hook -group 'debug-hooks' global ModeChange .* %{ echo -debug %val{hook_param} }
 }
