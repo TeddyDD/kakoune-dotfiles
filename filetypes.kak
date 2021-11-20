@@ -29,14 +29,16 @@ for-filetype go %{
     ctags-generate
     lsp-auto-hover-enable
     lsp-auto-signature-help-enable
-	map window user W '| fmt -w 80 -p //'
+	map window user W '| fmt -w 80 -p //<ret>'
     set-face window Reference default,rgba:368aeb26
     set-option window lsp_auto_highlight_references true
     set-option window lintcmd 'revive'
     set-option window formatcmd 'goreturns'
     hook window BufWritePre .* %{
-		ctags-update-tags
 		lsp-formatting-sync
+    }
+    hook window BufWritePost .* %{
+		ctags-update-tags
     }
 }
 
