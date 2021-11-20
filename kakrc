@@ -8,7 +8,11 @@ try %{
     define-command kks-term %{
         kks-connect terminal
     }
+    define-command kks-term-down %{
+        kks-connect tmux-terminal-vertical
+    }
     alias global '>' kks-term
+    alias global 'v' kks-term-down
 }
 
 # load global settings
