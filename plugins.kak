@@ -33,9 +33,6 @@ plug "occivink/kakoune-sort-selections" \
 plug "occivink/kakoune-phantom-selection" \
 plug "occivink/kakoune-sudo-write" \
 plug "occivink/kakoune-vertical-selection" \
-plug "TeddyDD/auto-pairs.kak" config %{
-    enable-auto-pairs
-} \
 plug "TeddyDD/terminal-mode.kak" %{
     require-module terminal-mode
     map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
@@ -53,7 +50,6 @@ plug "https://gitlab.com/fsub/kakoune-mark" %{
     map global normal <F3> :mark-clear<ret>
 } \
 plug "andreyorst/smarttab.kak" \
-plug "andreyorst/kakoune-snippet-collection" \
 plug "andreyorst/fzf.kak" config %{
     require-module fzf
     require-module fzf-buffer
@@ -89,48 +85,6 @@ plug "eraserhd/parinfer-rust" do %{
         hook -group parinfer window NormalKey .* %{ parinfer -if-enabled -smart }
         hook -group parinfer window InsertChar .* %{ parinfer -if-enabled -smart }
         hook -group parinfer window InsertDelete .* %{ parinfer -if-enabled -smart }
-    }
-} \
-plug "occivink/kakoune-snippets" config %{
-    set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-snippet-collection/snippets"
-    set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-cfdg/snippets"
-    set-option global snippets_auto_expand false
-    map global insert '<tab>' "z<a-;>: snippets-expand-or-jump 'tab'<ret>"
-    map global normal '<tab>' ": snippets-expand-or-jump 'tab'<ret>"
-
-    hook global InsertCompletionShow .* %{
-        try %{
-            execute-keys -draft 'h<a-K>\h<ret>'
-            map window insert '<ret>' "z<a-;>: snippets-expand-or-jump 'ret'<ret>"
-        }
-    }
-
-    hook global InsertCompletionHide .* %{
-        unmap window insert '<ret>' "z<a-;>: snippets-expand-or-jump 'ret'<ret>"
-    }
-
-    define-command snippets-expand-or-jump -params 1 %{
-        execute-keys <backspace>
-        try %{ snippets-expand-trigger %{
-            set-register / "%opt{snippets_triggers_regex}\z"
-            execute-keys 'hGhs<ret>'
-        }} catch %{
-            snippets-select-next-placeholders
-        } catch %sh{
-            printf "%s\n" "execute-keys -with-hooks <$1>"
-        } catch %{
-            nop
-        }
-    }
-} \
-plug "TeddyDD/kakoune-wiki" %{
-    wiki-setup %sh{ echo  "$HOME/Notatki/wiki" }
-    map global user w :wiki<space> -docstring 'wiki'
-
-    define-command diary %{
-        edit ~/Notatki/wiki/dziennik-public.md
-        execute-keys 'geo<esc>! date "+%Y-%m-%d: %H:%M"<ret>k'
-        underline -
     }
 } \
 plug "TeddyDD/kakoune-cfdg" \
