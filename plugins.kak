@@ -131,4 +131,25 @@ plug "https://git.sr.ht/~raiguard/harpoon.kak" %{
 } \
 plug "natasky/kakoune-multi-file" \
 plug "TeddyDD/kakoune-pixilang" \
+plug "occivink/kakoune-snippets" config %{
+  set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-snippet-collection/snippets"
+  set-option global snippets_auto_expand false
+  define-command -hidden snippets-custom-trigger %{
+    try %{
+      snippets-expand-trigger %{
+        reg / "%opt{snippets_triggers_regex}"
+        # select to the beginning of the line, and then subselect for one of the triggers
+        execute-keys ';bs<ret>'
+      }
+      try %{ execute-keys <esc>_<a-d>i }
+    } catch %{
+        snippets-select-next-placeholders
+        try %{ execute-keys <esc>_<a-d>i } catch %{ execute-keys i }
+    }
+  }
+  map global insert '<c-s>' '<a-;>: snippets-custom-trigger<ret>'
+  # map global insert '<c-n>' '<a-;>: snippets-select-next-placeholders<ret><esc>'
+  # map global normal '<c-n>' ': snippets-select-next-placeholders<ret>'
+} \
+plug "andreyorst/kakoune-snippet-collection" \
 }
