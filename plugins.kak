@@ -118,4 +118,15 @@ plug "dmerejkowsky/kak-subvert" do %{
     cargo build --release
     cargo install --path .
 } \
+plug "https://git.sr.ht/~raiguard/harpoon.kak" %{
+    map global normal <c-F1> ": harpoon-nav 1 true<ret>" -docstring "Add file to 1"
+    map global normal <c-F2> ": harpoon-nav 2 true<ret>" -docstring "Add file to 2"
+    map global normal <c-F3> ": harpoon-nav 3 true<ret>" -docstring "Add file to 3"
+    map global normal <c-F4> ": harpoon-nav 4 true<ret>" -docstring "Add file to 4"
+    map global normal <c-F5> ": harpoon-nav 5 true<ret>" -docstring "Add file to 5"
+    map global normal <c-F6> ": harpoon-nav 6 true<ret>" -docstring "Add file to 6"
+    map global normal <c-F7> ": harpoon-nav 7 true<ret>" -docstring "Add file to 7"
+    map global normal <c-F8> ": harpoon-nav 8 true<ret>" -docstring "Add file to 8"
+    map global normal <c-F9> ": harpoon-nav 9 true<ret>" -docstring "Add file to 9"
+} \
 }
