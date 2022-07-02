@@ -129,4 +129,6 @@ plug "https://git.sr.ht/~raiguard/harpoon.kak" %{
     map global normal <c-F8> ": harpoon-nav 8 true<ret>" -docstring "Add file to 8"
     map global normal <c-F9> ": harpoon-nav 9 true<ret>" -docstring "Add file to 9"
 } \
+plug "natasky/kakoune-multi-file" \
+plug "TeddyDD/kakoune-pixilang" \
 }
