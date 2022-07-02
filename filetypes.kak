@@ -19,6 +19,10 @@ for-filetype "(python|yaml|lua|cucumber)" %{
     expandtab
 }
 
+for-filetype "git-commit" %{
+	map buffer user W '| fmt -w 72<ret>'
+}
+
 for-filetype "fish" %{
 	set-option buffer formatcmd 'fish -c fish_indent'
 }
