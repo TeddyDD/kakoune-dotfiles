@@ -64,6 +64,7 @@ plug "andreyorst/fzf.kak" config %{
     set-option global fzf_file_command 'fd --type f --follow'
     set-option global fzf_sk_grep_command "rg -niL"
     set-option global fzf_use_main_selection false
+    map global fzf g ': fzf-sk-grep<ret>'
     map global user f ': fzf-mode<ret>' -docstring 'fzf'
 } \
 plug "andreyorst/tagbar.kak" defer "tagbar" %{
