@@ -77,15 +77,10 @@ plug "laelath/kakoune-show-matching-insert" %{
 } \
 plug "eraserhd/kak-ansi" \
 plug "eraserhd/parinfer-rust" do %{
-    cargo build --release
-    cargo install --path .
-} %{
-    hook -group parinfer global WinSetOption filetype=lisp %{
-        parinfer-enable-window
-        parinfer -if-enabled -paren
-        hook -group parinfer window NormalKey .* %{ parinfer -if-enabled -smart }
-        hook -group parinfer window InsertChar .* %{ parinfer -if-enabled -smart }
-        hook -group parinfer window InsertDelete .* %{ parinfer -if-enabled -smart }
+    cargo install --force --path .
+} config %{
+    hook global WinSetOption filetype=(clojure|lisp|scheme|racket) %{
+        parinfer-enable-window -smart
     }
 } \
 plug "TeddyDD/kakoune-cfdg" \
