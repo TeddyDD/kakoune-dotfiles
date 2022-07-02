@@ -117,4 +117,5 @@ plug "gustavo-hms/peneira" defer "peneira" %{
 plug "dmerejkowsky/kak-subvert" do %{
     cargo build --release
     cargo install --path .
+} \
 }
