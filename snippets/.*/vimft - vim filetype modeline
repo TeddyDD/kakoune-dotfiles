@@ -1,0 +1,2 @@
+vim: set ft=${0:ini}
+kakoune: set filetype=${0:ini}
