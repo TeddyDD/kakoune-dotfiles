@@ -14,7 +14,7 @@ provide-module host-flyby %£
 colorscheme 'selenized-white'
 
 evaluate-commands %sh{kak-lsp --kakoune -s "$kak_session"}
-hook global WinSetOption filetype=(python|go|c|typescript) %{
+hook global WinSetOption filetype=(python|go|c|typescript|dart) %{
     lsp-enable-window
 }
 
