@@ -100,6 +100,10 @@ plug "andreyorst/kaktree" config %{
         remove-highlighter buffer/show-whitespaces
     }
     kaktree-enable
+    set-option global kaktree_dir_icon_open  '⠀'
+    set-option global kaktree_dir_icon_close '⠀'
+    set-option global kaktree_file_icon      '⠀'
+    set-face global kaktree_icon_face function
 } \
 plug "https://gitlab.com/listentolist/kakoune-table" \
 plug "matthias-margush/tug" \
