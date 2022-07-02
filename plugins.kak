@@ -152,4 +152,5 @@ plug "occivink/kakoune-snippets" config %{
   # map global normal '<c-n>' ': snippets-select-next-placeholders<ret>'
 } \
 plug "andreyorst/kakoune-snippet-collection" \
+plug "gspia/csv.kak" \
 }
