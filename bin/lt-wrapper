@@ -1,0 +1,13 @@
+#!/bin/sh
+# https://gitlab.com/Screwtapello/kakoune-languagetool/-/blob/master/languagetool-wrapper.sh
+languagetool -m pl -adl "$1" 2>&1 |
+	sed -E '/^[0-9]+.\) Line /{
+        # Append the following line (with the message) into the buffer
+        N
+
+        # Replace the human-readable location with a Unixy one.
+        s/^[^ ]+ Line ([^,]+), column ([^,]+), Rule ID/filename:\1:\2/
+
+        # Make sure the actual error message is on the same line.
+        s/.Message//
+    }'

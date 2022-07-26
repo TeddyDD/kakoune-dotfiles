@@ -19,6 +19,10 @@ for-filetype "(python|yaml|lua|cucumber)" %{
     expandtab
 }
 
+for-filetype "git-commit|markdown" %{
+    set-option buffer lintcmd "%val{config}/bin/lt-wrapper"
+}
+
 for-filetype "git-commit" %{
 	map buffer user W '| fmt -w 72<ret>'
 }
