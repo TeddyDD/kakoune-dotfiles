@@ -96,9 +96,8 @@ define-command cd-to-buffer-dir \
 
 
 define-command date -docstring 'insert ISO-8601 date at point' %{
-    execute-keys '!date --iso-8601<ret>i<backspace>'
+    execute-keys '!date --iso-8601<ret>a<backspace>'
 }
-
 
 define-command source-dir -params 1 \
 -docstring 'source <DIR>

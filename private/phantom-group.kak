@@ -22,5 +22,7 @@ phantom-ungroup %{
     unmap buffer insert <c-g>   '<esc>: phantom-ungroup<ret>i'
 }
 
-map global normal <c-g>  ': phantom-group<ret><space>'
-map global insert <c-g>  '<a-;>: phantom-group<ret><a-;><space>'
+map global normal <c-g>  ': phantom-group<ret>,'
+map global insert <c-g>  '<a-;>: phantom-group<ret><a-;>,'
+
+set-face global PhantomSelection default,rgba:43ff64a6

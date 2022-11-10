@@ -29,10 +29,10 @@ plug "occivink/kakoune-find" \
 plug "occivink/kakoune-expand" %{
     map global normal '+' ': expand<ret>' -docstring 'Expand Selection'
 } \
-plug "occivink/kakoune-sort-selections" \
-plug "occivink/kakoune-phantom-selection" \
-plug "occivink/kakoune-sudo-write" \
-plug "occivink/kakoune-vertical-selection" \
+plug "occivin/kakoune-sort-selections" \
+plug "occivin/kakoune-phantom-selection" \
+plug "occivin/kakoune-sudo-write" \
+plug "occivin/kakoune-vertical-selection" \
 plug "TeddyDD/terminal-mode.kak" %{
     require-module terminal-mode
     map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
@@ -152,5 +152,4 @@ plug "occivink/kakoune-snippets" config %{
   # map global normal '<c-n>' ': snippets-select-next-placeholders<ret>'
 } \
 plug "andreyorst/kakoune-snippet-collection" \
-plug "gspia/csv.kak" \
-}
+plug "gspia/csv.kak"
