@@ -57,14 +57,13 @@ plug "andreyorst/fzf.kak" config %{
     require-module fzf-git
     require-module fzf-vcs
     require-module fzf-grep
-    require-module fzf-sk-grep
     require-module fzf-project
     require-module fzf-file
     set-option global fzf_highlight_command 'chroma -f terminal16m -s solarized-light {}'
     set-option global fzf_file_command 'fd --type f --follow'
-    set-option global fzf_sk_grep_command "rg -niL"
+    set-option global fzf_grep_command 'rg'
     set-option global fzf_use_main_selection false
-    map global fzf g ': fzf-sk-grep<ret>'
+    map global fzf g ': fzf-grep<ret>'
     map global user f ': fzf-mode<ret>' -docstring 'fzf'
 } \
 plug "andreyorst/tagbar.kak" defer "tagbar" %{
