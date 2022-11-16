@@ -36,4 +36,4 @@ map global normal <%> '<c-s>%' # save position befor %
 map global user -docstring "select inner " i <a-i>
 map global user -docstring "select outer"  a <a-a>
 
-map global normal = ':prompt math: %{exec "a%val{text}<lt>esc>|bc<lt>ret>"}<ret>'
+map global normal = ': prompt math: %{exec "a%val{text}<lt>esc>|%opt{math_command}<lt>ret>"}<ret>'

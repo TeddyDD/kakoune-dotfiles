@@ -7,6 +7,8 @@ set-option global grepcmd "rg -niL --column --ignore-vcs"
 set-option global scrolloff '2,3'
 set-option global tabstop 4
 
+declare-option str math_command "bc"
+
 set-option -add global matching_pairs „
 set-option -add global matching_pairs ”
 

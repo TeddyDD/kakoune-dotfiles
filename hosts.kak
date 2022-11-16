@@ -7,6 +7,8 @@ provide-module host-moon %£
     hook global WinSetOption filetype=(rust|python|go|javascript|typescript|perl) %{
         lsp-enable-window
     }
+    declare-option str math_command "qalc -t +u8 -f -"
+
 £
 
 provide-module host-flyby %£
