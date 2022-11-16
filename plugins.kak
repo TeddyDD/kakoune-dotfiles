@@ -6,7 +6,7 @@ plug-chain "andreyorst/plug.kak" noload \
 plug "gustavo-hms/luar" \
 plug "kakoune-editor/kakoune-extra-filetypes" \
 plug "https://gitlab.com/listentolist/kakoune-fandt" %{
-	require-module fandt
+    require-module fandt
 } \
 plug "Delapouite/kakoune-text-objects" \
 plug "Delapouite/kakoune-auto-percent" \
@@ -21,7 +21,7 @@ plug 'delapouite/kakoune-hump' %{
   map global normal 'Œ' ': extend-next-hump<ret>'     -docstring 'extend next hump'
 } \
 plug "Delapouite/kakoune-mirror" config %{
-	map global user m ': enter-user-mode -lock mirror<ret>' -docstring 'mirror mode'
+    map global user m ': enter-user-mode -lock mirror<ret>' -docstring 'mirror mode'
 } \
 plug "Delapouite/kakoune-palette" \
 plug "Delapouite/kakoune-select-view" \
@@ -88,7 +88,7 @@ plug "TeddyDD/kakoune-selenized" theme \
 plug "TeddyDD/distraction-free.kak" \
 plug "chambln/kakoune-smart-quotes" \
 plug 'jjk96/kakoune-rainbow' %{
-	set-option global rainbow_faces red green yellow blue magenta cyan
+    set-option global rainbow_faces red green yellow blue magenta cyan
 } \
 plug "andreyorst/kaktree" config %{
     map global user 't' ": kaktree-toggle<ret>" -docstring "toggle filetree panel"
