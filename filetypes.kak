@@ -4,19 +4,23 @@
 
 require-module 'filetypes-sugar'
 
-for-extension "(fnl|janet)" %{
+for-extension "(janet)" %{
     set-option buffer filetype lisp
 }
 
 # TIC-80 games written in fennel
 hook global BufCreate .*/TIC-80/fennel/.*\.lua %{
-    set-option buffer filetype lisp
+    set-option buffer filetype fennel
     set-option buffer -add extra_word_chars -
     lsp-diagnostic-lines-disable
 }
 
 for-filetype "(python|yaml|lua|cucumber)" %{
     expandtab
+}
+
+for-filetype "(git-commit|markdown)" %{
+    set-option buffer lintcmd "%val{config}/bin/lt-wrapper"
 }
 
 for-filetype "git-commit" %{
