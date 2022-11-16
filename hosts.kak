@@ -4,7 +4,7 @@ provide-module host-moon %£
 	colorscheme selenized-white
     source "%val{config}/moon-theme.kak"
     evaluate-commands %sh{kak-lsp --kakoune -s $kak_session}
-    hook global WinSetOption filetype=(rust|python|go|javascript|typescript|perl) %{
+    hook global WinSetOption filetype=(rust|python|go|javascript|typescript|perl|elixir|gdscript|nim|fennel) %{
         lsp-enable-window
     }
     declare-option str math_command "qalc -t +u8 -f -"
