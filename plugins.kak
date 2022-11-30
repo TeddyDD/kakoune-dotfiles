@@ -26,13 +26,18 @@ plug "Delapouite/kakoune-mirror" config %{
 plug "Delapouite/kakoune-palette" \
 plug "Delapouite/kakoune-select-view" \
 plug "occivink/kakoune-find" \
-plug "occivink/kakoune-expand" %{
+plug "occivink/kakoune-expand" noload config %{
+    source "%val{config}/plugins/kakoune-expand/expand.kak"
     map global normal '+' ': expand<ret>' -docstring 'Expand Selection'
 } \
-plug "occivin/kakoune-sort-selections" \
+plug "occivin/kakoune-sort-selections" noload config %{
+    source "%val{config}/plugins/kakoune-sort-selections/sort-selections.kak"
+} \
 plug "occivin/kakoune-phantom-selection" \
 plug "occivin/kakoune-sudo-write" \
-plug "occivin/kakoune-vertical-selection" \
+plug "occivin/kakoune-vertical-selection" noload config %{
+    source "%val{config}/plugins/kakoune-vertical-selection/vertical-selection.kak"
+}\
 plug "TeddyDD/terminal-mode.kak" %{
     require-module terminal-mode
     map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
@@ -130,9 +135,9 @@ plug "https://git.sr.ht/~raiguard/harpoon.kak" %{
 } \
 plug "natasky/kakoune-multi-file" \
 plug "TeddyDD/kakoune-pixilang" \
-plug "occivink/kakoune-snippets" config %{
+plug "occivink/kakoune-snippets" commit 9c96e64a config %{
   set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-snippet-collection/snippets"
-  set-option global snippets_auto_expand false
+    set-option global snippets_auto_expand false
   define-command -hidden snippets-custom-trigger %{
     try %{
       snippets-expand-trigger %{
