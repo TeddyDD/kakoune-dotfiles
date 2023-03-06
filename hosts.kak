@@ -38,14 +38,3 @@ hook global WinSetOption filetype=(rust|python|go|javascript|typescript) %{
 #nop %sh{ (kak-lsp -s kaklspglobal -vvv ) > /tmp/kak-lsp.log 2>&1 < /dev/null & }
 
 £
-
-
-provide-module host-wilczyca %£
-
-colorscheme selenized-black
-eval %sh{kak-lsp --kakoune -s kak_lsp_global}
-hook global WinSetOption filetype=(rust|python|go|javascript|typescript) %{
-    lsp-enable-window
-}
-
-£
