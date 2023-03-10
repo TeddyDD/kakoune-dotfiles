@@ -42,7 +42,7 @@ define-command -hidden qring-cancel %{
 }
 
 define-command -hidden qring-accept %{
-    evaluate-commands %
+    evaluate-commands %{
         set-register '@' %sh{ echo $kak_selections | tr -d ' ' }
         delete-buffer!
         qring-enable
