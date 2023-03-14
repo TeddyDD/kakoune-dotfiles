@@ -50,13 +50,14 @@ hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n> }
 hook global InsertCompletionHide .* %{ unmap window insert <s-tab> <c-p> }
 
 # Kakoune clipboard to system clipboard
-hook -group clipboard global NormalKey y|d|c %{
+hook -group clipboard global RegisterModified '"' %{
     nop %sh{
         printf %s "$kak_main_reg_dquote" | xsel --input --clipboard
     }
 }
 
 define-command sync-clip %{
+    # This could be set-register dquote %sh but sh cuts final \n
     evaluate-commands %sh{
         xclip -o -r -selection clipboard > /tmp/kak-clip
         echo 'set-register dquote "%file{/tmp/kak-clip}"'
