@@ -95,7 +95,7 @@ plug "chambln/kakoune-smart-quotes" \
 plug 'jjk96/kakoune-rainbow' %{
     set-option global rainbow_faces red green yellow blue magenta cyan
 } \
-plug "andreyorst/kaktree" config %{
+plug "git@git.sr.ht:~teddy/kaktree" config %{
     map global user 't' ": kaktree-toggle<ret>" -docstring "toggle filetree panel"
     hook global WinSetOption filetype=kaktree %{
         remove-highlighter buffer/numbers
