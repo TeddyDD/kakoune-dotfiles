@@ -1,7 +1,8 @@
-autoloads/
-plugins/
-colors/
+/autoloads
+/plugins
+/colors
+/bundle
 /.fzf-projects
 
-moon-theme.kak
+/moon-theme.kak
 tags

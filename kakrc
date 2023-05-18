@@ -22,18 +22,12 @@ source "%val{config}/global.kak"
 source "%val{config}/utils.kak"
 
 # load private / WIP plugins and scripts
-
 source-dir "%val{config}/private"
 
-# load plug
-source "%val{config}/plugins/plug.kak/rc/plug.kak"
-
 # load plugins configuration
-
 source "%val{config}/plugins.kak"
 
 # load config for filetypes / languages
-
 source "%val{config}/filetypes.kak"
 
 # load key maps

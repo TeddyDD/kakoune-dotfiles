@@ -2,60 +2,64 @@
 # PLUGINS #
 ###########
 
-plug-chain "andreyorst/plug.kak" noload \
-plug "gustavo-hms/luar" \
-plug "kakoune-editor/kakoune-extra-filetypes" \
-plug "https://gitlab.com/listentolist/kakoune-fandt" %{
+
+source "%val{config}/bundle/kak-bundle/rc/kak-bundle.kak"
+bundle-noload kak-bundle https://git.sr.ht/~jdugan6240/kak-bundle
+
+bundle luar https://github.com/gustavo-hms/luar
+bundle kakoune-extra-filetypes https://github.com/kakoune-editor/kakoune-extra-filetypes
+
+bundle kakoune-fandt https://github.com/listentolist/kakoune-fandt %{
     require-module fandt
-} \
-plug "Delapouite/kakoune-text-objects" \
-plug "Delapouite/kakoune-auto-percent" \
-plug "Delapouite/kakoune-buffers" %{
+}
+
+bundle kakoune-text-objects https://github.com/Delapouite/kakoune-text-objects
+bundle kakoune-auto-percent https://github.com/Delapouite/kakoune-auto-percent
+
+bundle kakoune-buffers https://github.com/Delapouite/kakoune-buffers %{
     map global user b ':enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)…'
     map global buffers b ':fzf-buffer<ret>' -docstring 'Fzf buffer list'
-} \
-plug 'delapouite/kakoune-hump' %{
+}
+
+bundle kakoune-hump https://github.com/delapouite/kakoune-hump %{
   map global normal '”' ': select-previous-hump<ret>' -docstring 'select prev hump'
   map global normal 'œ' ': select-next-hump<ret>'     -docstring 'select next hump'
   map global normal '“' ': extend-previous-hump<ret>' -docstring 'extend prev hump'
   map global normal 'Œ' ': extend-next-hump<ret>'     -docstring 'extend next hump'
-} \
-plug "Delapouite/kakoune-mirror" config %{
+}
+bundle kakoune-mirror https://github.com/Delapouite/kakoune-mirror %{
     map global user m ': enter-user-mode -lock mirror<ret>' -docstring 'mirror mode'
-} \
-plug "Delapouite/kakoune-palette" \
-plug "Delapouite/kakoune-select-view" \
-plug "occivink/kakoune-find" \
-plug "occivink/kakoune-expand" noload config %{
-    source "%val{config}/plugins/kakoune-expand/expand.kak"
+}
+bundle kakoune-palette https://github.com/Delapouite/kakoune-palette
+bundle kakoune-select-view https://github.com/Delapouite/kakoune-select-view
+bundle kakoune-find https://github.com/occivink/kakoune-find
+bundle kakoune-expand https://github.com/occivink/kakoune-expand %{
     map global normal '+' ': expand<ret>' -docstring 'Expand Selection'
-} \
-plug "occivin/kakoune-sort-selections" noload config %{
-    source "%val{config}/plugins/kakoune-sort-selections/sort-selections.kak"
-} \
-plug "occivin/kakoune-phantom-selection" \
-plug "occivin/kakoune-sudo-write" \
-plug "occivin/kakoune-vertical-selection" noload config %{
-    source "%val{config}/plugins/kakoune-vertical-selection/vertical-selection.kak"
-}\
-plug "TeddyDD/terminal-mode.kak" %{
+}
+
+bundle kakoune-sort-selections https://github.com/occivink/kakoune-sort-selections
+bundle kakoune-phantom-selection https://github.com/occivin/kakoune-phantom-selection
+bundle kakoune-sudo-write https://github.com/occivin/kakoune-sudo-write
+bundle kakoune-vertical-selection https://github.com/occivin/kakoune-vertical-selection
+
+bundle https://github.com/TeddyDD/terminal-mode.kak %{
     require-module terminal-mode
     map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
-} \
-plug "TeddyDD/split-object.kak" %{
+}
+bundle split-object.kak https://github.com/TeddyDD/split-object.kak %{
     map global normal <a-I> ': enter-user-mode select<ret>'
     map global user I ': enter-user-mode select<ret>' -docstring 'Split objetcs'
-} \
-plug "h-youhei/kakoune-each-line-selection" \
-plug "h-youhei/kakoune-surround" %{
+}
+bundle kakoune-each-line-selection https://github.com/h-youhei/kakoune-each-line-selection
+bundle kakoune-surround https://github.com/h-youhei/kakoune-surround %{
     map global normal <a-R> ': surround<ret>' -docstring 'surround'
-} \
-plug "https://gitlab.com/fsub/kakoune-mark" %{
+}
+bundle kakoune-mark" "https://gitlab.com/fsub/kakoune-mark" %{
     map global normal <F2> <a-i>w:mark-word<ret>
     map global normal <F3> :mark-clear<ret>
-} \
-plug "andreyorst/smarttab.kak" \
-plug "andreyorst/fzf.kak" config %{
+}
+bundle smarttab.kak https://github.com/andreyorst/smarttab.kak
+bundle fzf.kak https://github.com/andreyorst/fzf.kak %{
     require-module fzf
     require-module fzf-buffer
     require-module fzf-ctags
@@ -70,32 +74,36 @@ plug "andreyorst/fzf.kak" config %{
     set-option global fzf_use_main_selection false
     map global fzf g ': fzf-grep<ret>'
     map global user f ': fzf-mode<ret>' -docstring 'fzf'
-} \
-plug "andreyorst/tagbar.kak" defer "tagbar" %{
-    set-option global tagbar_sort false
-    set-option global tagbar_size 40
-    set-option global tagbar_display_anon false
-} \
-plug "laelath/kakoune-show-matching-insert" %{
+}
+bundle tagbar.kak https://github.com/andreyorst/tagbar.kak %{
+    hook global ModuleLoaded tagbar %{
+        set-option global tagbar_sort false
+        set-option global tagbar_size 40
+        set-option global tagbar_display_anon false
+    }
+}
+bundle kakoune-show-matching-insert https://github.com/laelath/kakoune-show-matching-insert %{
     add-highlighter global/ ranges show_matching_insert
-} \
-plug "eraserhd/kak-ansi" \
-plug "eraserhd/parinfer-rust" do %{
-    cargo install --force --path .
-} config %{
+}
+bundle kak-ansi https://github.com/eraserhd/kak-ansi
+bundle parinfer-rust https://github.com/eraserhd/parinfer-rust %{
     hook global WinSetOption filetype=(clojure|lisp|scheme|racket) %{
         parinfer-enable-window -smart
     }
-} \
-plug "TeddyDD/kakoune-cfdg" \
-plug "TeddyDD/kakoune-mint" \
-plug "TeddyDD/kakoune-selenized" theme \
-plug "TeddyDD/distraction-free.kak" \
-plug "chambln/kakoune-smart-quotes" \
-plug 'jjk96/kakoune-rainbow' %{
+} %{
+    cargo install --force --path .
+}
+bundle kakoune-cfdg https://github.com/TeddyDD/kakoune-cfdg
+bundle kakoune-mint https://github.com/TeddyDD/kakoune-mint
+# bundle kakoune-selenized https://github.com/TeddyDD/kakoune-selenized %{} %{
+
+# }
+bundle distraction-free.kak https://github.com/TeddyDD/distraction-free.kak
+bundle kakoune-smart-quotes https://github.com/chambln/kakoune-smart-quotes
+bundle kakoune-rainbow https://github.com/jjk96/kakoune-rainbow %{
     set-option global rainbow_faces red green yellow blue magenta cyan
-} \
-plug "git@git.sr.ht:~teddy/kaktree" config %{
+}
+bundle kaktree "https://git.sr.ht/~teddy/kaktree" %{
     map global user 't' ": kaktree-toggle<ret>" -docstring "toggle filetree panel"
     hook global WinSetOption filetype=kaktree %{
         remove-highlighter buffer/numbers
@@ -108,21 +116,23 @@ plug "git@git.sr.ht:~teddy/kaktree" config %{
     set-option global kaktree_dir_icon_close '⠀'
     set-option global kaktree_file_icon      '⠀'
     set-face global kaktree_icon_face function
-} \
-plug "https://gitlab.com/listentolist/kakoune-table" \
-plug "matthias-margush/tug" \
-plug "ftonneau/digraphs.kak" %{
-    set-option global digraphs_path 'plugins/digraphs.kak'
+}
+bundle kakoune-table "https://gitlab.com/listentolist/kakoune-table"
+bundle tug https://github.com/matthias-margush/tug
+bundle digraphs.kak https://github.com/ftonneau/digraphs.kak %{
+    set-option global digraphs_path 'bundle peneirains/digraphs.kak'
     digraphs-enable-on <a-d> <a-D>
-} \
-plug "gustavo-hms/peneira" defer "peneira" %{
-    set-face global PeneiraFlag default
-} \
-plug "dmerejkowsky/kak-subvert" do %{
+}
+bundle peneira https://github.com/gustavo-hms/peneira %{
+    hook global ModuleLoaded peneira %{
+        set-face global PeneiraFlag default
+    }
+}
+bundle kak-subvert https://github.com/dmerejkowsky/kak-subvert %{} %{
     cargo build --release
     cargo install --path .
-} \
-plug "https://git.sr.ht/~raiguard/harpoon.kak" %{
+}
+bundle harpoon.kak "https://git.sr.ht/~raiguard/harpoon.kak" %{
     map global normal <c-F1> ": harpoon-nav 1 true<ret>" -docstring "Add file to 1"
     map global normal <c-F2> ": harpoon-nav 2 true<ret>" -docstring "Add file to 2"
     map global normal <c-F3> ": harpoon-nav 3 true<ret>" -docstring "Add file to 3"
@@ -132,33 +142,33 @@ plug "https://git.sr.ht/~raiguard/harpoon.kak" %{
     map global normal <c-F7> ": harpoon-nav 7 true<ret>" -docstring "Add file to 7"
     map global normal <c-F8> ": harpoon-nav 8 true<ret>" -docstring "Add file to 8"
     map global normal <c-F9> ": harpoon-nav 9 true<ret>" -docstring "Add file to 9"
-} \
-plug "natasky/kakoune-multi-file" \
-plug "TeddyDD/kakoune-pixilang" \
-plug "occivink/kakoune-snippets" commit 9c96e64a config %{
-  set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-snippet-collection/snippets"
+}
+bundle kakoune-multi-file https://github.com/natasky/kakoune-multi-file
+bundle kakoune-pixilang https://github.com/TeddyDD/kakoune-pixilang
+bundle kakoune-snippets 'git clone https://github.com/occivink/kakoune-snippets && cd kakoune-snippets && git checkout 9c96e64a' %{
+    set-option -add global snippets_directories "%val{config}/bundle/kakoune-snippet-collection/snippets"
     set-option global snippets_auto_expand false
-  define-command -hidden snippets-custom-trigger %{
-    try %{
-      snippets-expand-trigger %{
-        reg / "%opt{snippets_triggers_regex}"
-        # select to the beginning of the line, and then subselect for one of the triggers
-        execute-keys ';bs<ret>'
-      }
-      try %{ execute-keys <esc>_<a-d>i }
-    } catch %{
-        snippets-select-next-placeholders
-        try %{ execute-keys <esc>_<a-d>i } catch %{ execute-keys i }
+    define-command -hidden snippets-custom-trigger %{
+        try %{
+          snippets-expand-trigger %{
+            reg / "%opt{snippets_triggers_regex}"
+            # select to the beginning of the line, and then subselect for one of the triggers
+            execute-keys ';bs<ret>'
+          }
+          try %{ execute-keys <esc>_<a-d>i }
+        } catch %{
+            snippets-select-next-placeholders
+            try %{ execute-keys <esc>_<a-d>i } catch %{ execute-keys i }
+        }
     }
-  }
   map global insert '<c-s>' '<a-;>: snippets-custom-trigger<ret>'
   # map global insert '<c-n>' '<a-;>: snippets-select-next-placeholders<ret><esc>'
   # map global normal '<c-n>' ': snippets-select-next-placeholders<ret>'
-} \
-plug "andreyorst/kakoune-snippet-collection" \
-plug "https://github.com/pimpale/kak-preservecase" do %{
+}
+bundle kakoune-snippet-collection https://github.com/andreyorst/kakoune-snippet-collection
+bundle kak-preservecase" https://github.com/pimpale/kak-preservecase %{} %{
     cargo install --locked --force --path .
-} \
-plug "harryoooooooooo/diff.kak" config %{
+}
+bundle diff.kak https://github.com/harryoooooooooo/diff.kak %{
     diff-enable-auto-detect
 }
