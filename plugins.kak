@@ -38,9 +38,9 @@ bundle kakoune-expand https://github.com/occivink/kakoune-expand %{
 }
 
 bundle kakoune-sort-selections https://github.com/occivink/kakoune-sort-selections
-bundle kakoune-phantom-selection https://github.com/occivin/kakoune-phantom-selection
-bundle kakoune-sudo-write https://github.com/occivin/kakoune-sudo-write
-bundle kakoune-vertical-selection https://github.com/occivin/kakoune-vertical-selection
+bundle kakoune-phantom-selection https://github.com/occivink/kakoune-phantom-selection
+bundle kakoune-sudo-write https://github.com/occivink/kakoune-sudo-write
+bundle kakoune-vertical-selection https://github.com/occivink/kakoune-vertical-selection
 
 bundle terminal-mode.kak  https://github.com/TeddyDD/terminal-mode.kak %{
     require-module terminal-mode
