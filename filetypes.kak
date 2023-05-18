@@ -107,5 +107,5 @@ for-filetype sh %{
 }
 
 hook global BufOpenFile '.*\.env.*' %{
-    set-option buffer filetype "ini"
+    set-option buffer filetype "sh"
 }
