@@ -54,7 +54,7 @@ bundle kakoune-each-line-selection https://github.com/h-youhei/kakoune-each-line
 bundle kakoune-surround https://github.com/h-youhei/kakoune-surround %{
     map global normal <a-R> ': surround<ret>' -docstring 'surround'
 }
-bundle kakoune-mark" "https://gitlab.com/fsub/kakoune-mark" %{
+bundle kakoune-mark "https://gitlab.com/fsub/kakoune-mark" %{
     map global normal <F2> <a-i>w:mark-word<ret>
     map global normal <F3> :mark-clear<ret>
 }
