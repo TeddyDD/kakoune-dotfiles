@@ -156,4 +156,9 @@ plug "occivink/kakoune-snippets" commit 9c96e64a config %{
   # map global normal '<c-n>' ': snippets-select-next-placeholders<ret>'
 } \
 plug "andreyorst/kakoune-snippet-collection" \
-plug "gspia/csv.kak"
+plug "https://github.com/pimpale/kak-preservecase" do %{
+    cargo install --locked --force --path .
+} \
+plug "harryoooooooooo/diff.kak" config %{
+    diff-enable-auto-detect
+}
