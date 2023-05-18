@@ -42,7 +42,7 @@ bundle kakoune-phantom-selection https://github.com/occivin/kakoune-phantom-sele
 bundle kakoune-sudo-write https://github.com/occivin/kakoune-sudo-write
 bundle kakoune-vertical-selection https://github.com/occivin/kakoune-vertical-selection
 
-bundle https://github.com/TeddyDD/terminal-mode.kak %{
+bundle terminal-mode.kak  https://github.com/TeddyDD/terminal-mode.kak %{
     require-module terminal-mode
     map global user <tab> ': enter-user-mode terminal<ret>t' -docstring 'Terminal'
 }
